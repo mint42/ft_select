@@ -1,0 +1,14 @@
+a - select all
+c - clear all selected
+d - restore to default
+i - invert selected
+? - help
+u - undo
+q - quit
+r - redo
+x - delete
+/ - finder
+
+hjkl arrow support
+scrolling
+colors
