@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:07:05 by rreedy            #+#    #+#             */
-/*   Updated: 2019/10/27 05:59:41 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/10/28 15:00:51 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ struct			s_format
 {
 	uint32_t	term_width;
 	uint32_t	term_height;
+	uint32_t	max_name_len;
 	uint32_t	col_width;
-	uint32_t	max_len;
+	uint8_t		columns;
+	uint8_t		rows;
+	uint8_t		cursor_position;
 };
 
 struct			s_item
