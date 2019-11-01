@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   termcaps.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 23:45:02 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/01 01:33:32 by rreedy           ###   ########.fr       */
+/*   Created: 2019/11/01 01:24:05 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/01 01:25:01 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "errors.h"
-#include "ft_put.h"
-#include <unistd.h>
+#ifndef TERMCAPS_H
+# define TERMCAPS_H
 
-int		print_error(enum e_error_code ec)
-{
-	const char *const errors[TOTAL_ERRORS] = {
-		"$TERM environment variable not set",
-		"$TERM environment variable not recognized by termcaps",
-		"bad access to termcaps library"
-	};
+int		setup_termcaps(void);
 
-	if (ec > -1)
-		ft_putendl_fd(errors[ec], STDERR_FILENO);
-	return (1);
-}
+#endif

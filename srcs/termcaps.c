@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   termcaps.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 23:45:02 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/01 01:33:32 by rreedy           ###   ########.fr       */
+/*   Created: 2019/11/01 01:23:11 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/01 01:40:00 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
-#include "ft_put.h"
-#include <unistd.h>
+#include <ncurses.h>
+#include <stdlib.h>
+#include <term.h>
 
-int		print_error(enum e_error_code ec)
+int		setup_termcaps(void)
 {
-	const char *const errors[TOTAL_ERRORS] = {
-		"$TERM environment variable not set",
-		"$TERM environment variable not recognized by termcaps",
-		"bad access to termcaps library"
-	};
+	char	*termtype;
+	char	*term_buffer;
+	int		error;	
 
-	if (ec > -1)
-		ft_putendl_fd(errors[ec], STDERR_FILENO);
-	return (1);
+	termtype = getenv("TERM");
+	if (!termtype)
+		return (print_error(TERM_NOT_SPECIFIED));
+	term_buffer = 0;
+	error = tgetent(term_buffer, termtype);
+	if (error < 0)
+		return (print_error(BAD_TERMCAP_ACCESS));
+	else if (error == 0)
+		return(print_error(TERM_NOT_DEFINED));
+	return (SUCCESS);
 }

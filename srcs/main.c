@@ -6,12 +6,13 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:07:05 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/01 01:20:30 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/01 01:36:34 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
 #include "select.h"
+#include "termcaps.h"
 #include "struct_format.h"
 #include "struct_item.h"
 #include "ft_mem.h"
@@ -30,18 +31,6 @@ static void		do_selecting(struct s_item *items, int argc)
 	}
 }
 
-/*
-**	static void		setup_termcaps()
-**	{
-**		char			*termtype;
-**
-**		termtype = getenv("TERM");
-**		if (!termtype)
-**			return (print_error(TERM_NOT_SPECIFIED));
-**		if (tgetent()
-**	}
-*/
-
 int				main(int argc, char **argv)
 {
 	struct s_item	*items;
@@ -51,10 +40,12 @@ int				main(int argc, char **argv)
 		return (0);
 	items = (struct s_item *)ft_memalloc(sizeof(struct s_item) * argc - 1);
 	if (!items)
-		return (print_error(E_MALLOC));
+		return (print_error(MALLOC));
 	init_format(&format);
 	init_items(items, &format, argc - 1, argv);
+	if (setup_termcaps() == ERROR)
+		return (ERROR);
 	do_selecting(items, argc - 1);
 	ft_memdel((void **)&items);
-	return (0);
+	return (SUCCESS);
 }
