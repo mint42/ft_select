@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 01:23:11 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/01 01:40:00 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/01 02:17:33 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		setup_termcaps(void)
 {
 	char	*termtype;
 	char	*term_buffer;
-	int		error;	
+	int		error;
 
 	termtype = getenv("TERM");
 	if (!termtype)
@@ -29,6 +29,6 @@ int		setup_termcaps(void)
 	if (error < 0)
 		return (print_error(BAD_TERMCAP_ACCESS));
 	else if (error == 0)
-		return(print_error(TERM_NOT_DEFINED));
+		return (print_error(TERM_NOT_DEFINED));
 	return (SUCCESS);
 }
