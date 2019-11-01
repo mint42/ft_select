@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:34:57 by rreedy            #+#    #+#             */
-/*   Updated: 2019/10/31 23:42:35 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/01 01:21:00 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ struct			s_item
 	uint8_t		status;
 };
 
-void	init_items(struct s_item *items, struct s_format *format,
-			int argc, char **argv);
+void			init_items(struct s_item *items, struct s_format *format,
+					int argc, char **argv);
 
 #endif

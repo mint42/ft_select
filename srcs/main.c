@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 03:07:05 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/01 01:14:20 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/01 01:20:30 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ int				main(int argc, char **argv)
 	init_items(items, &format, argc - 1, argv);
 	do_selecting(items, argc - 1);
 	ft_memdel((void **)&items);
+	return (0);
 }
