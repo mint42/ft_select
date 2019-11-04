@@ -6,15 +6,12 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:35:54 by rreedy            #+#    #+#             */
-/*   Updated: 2019/10/31 23:36:13 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/03 18:36:05 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SELECT_H
 # define SELECT_H
 
-# define ACTIVE 0
-# define INACTIVE 1
-# define SELECTED 2
 
 #endif
