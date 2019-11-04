@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   termcaps.h                                         :+:      :+:    :+:   */
+/*   terminal.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,9 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TERMCAPS_H
-# define TERMCAPS_H
+#ifndef STRUCT_TERM_H
+# define STRUCT_TERM_H
 
-int		setup_termcaps(void);
+# include <termios.h>
+
+struct				s_term
+{
+	char			*term_buffer;
+	struct termios	old_settings;
+	struct termios	new_settings;
+};
+
+int		setup_terminal(struct s_term *term);
+int		reset_terminal(struct s_term *term);
 
 #endif

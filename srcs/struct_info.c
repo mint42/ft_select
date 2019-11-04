@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_format.h                                    :+:      :+:    :+:   */
+/*   struct_format.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 23:32:39 by rreedy            #+#    #+#             */
-/*   Updated: 2019/10/31 23:42:55 by rreedy           ###   ########.fr       */
+/*   Created: 2019/10/31 23:30:49 by rreedy            #+#    #+#             */
+/*   Updated: 2019/10/31 23:43:26 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_FORMAT_H
-# define STRUCT_FORMAT_H
+#include "struct_info.h"
 
-# include <stdint.h>
-
-struct			s_format
+void	setup_info(struct s_info *info)
 {
-	uint32_t	term_width;
-	uint32_t	term_height;
-	uint32_t	max_name_len;
-	uint32_t	col_width;
-	uint8_t		columns;
-	uint8_t		rows;
-	uint8_t		cursor_position;
-};
-
-void			init_format(struct s_format *format);
-
-#endif
+	info->term_width = 0;
+	info->term_height = 0;
+	info->max_name_len = 0;
+	info->col_width = 0;
+	info->columns = 0;
+	info->rows = 0;
+	info->cursor_position = 0;
+}

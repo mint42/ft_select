@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   termcaps.c                                         :+:      :+:    :+:   */
+/*   terminal.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,24 +11,47 @@
 /* ************************************************************************** */
 
 #include "errors.h"
+#include "struct_term.h"
 #include <ncurses.h>
 #include <stdlib.h>
+#include <curses.h>
 #include <term.h>
+#include <termios.h>
 
-int		setup_termcaps(void)
+static int	get_term_buffer(struct s_term *term)
 {
-	char	*termtype;
-	char	*term_buffer;
-	int		error;
+	char	*term_type;
+	int		error_code;
 
-	termtype = getenv("TERM");
-	if (!termtype)
-		return (print_error(TERM_NOT_SPECIFIED));
-	term_buffer = 0;
-	error = tgetent(term_buffer, termtype);
-	if (error < 0)
-		return (print_error(BAD_TERMCAP_ACCESS));
-	else if (error == 0)
-		return (print_error(TERM_NOT_DEFINED));
+	term_type = getenv("TERM");
+	if (!term_type)
+		return (print_error(E_TERM_NOT_SPECIFIED));
+	error_code = tgetent(term->term_buffer, term_type);
+	if (error_code < 0)
+		return (print_error(E_BAD_TERMCAP_ACCESS));
+	else if (error_code == 0)
+		return (print_error(E_TERM_NOT_DEFINED));
+	return (SUCCESS);
+}
+
+static int	get_term_settings(struct s_term *term)
+{
+	(void)term;
+	return (SUCCESS);
+}
+
+int			setup_terminal(struct s_term *term)
+{
+	term->term_buffer = 0;
+	if (get_term_buffer(term) == ERROR)
+		return (ERROR);
+	if (get_term_settings(term) == ERROR)
+		return (ERROR);
+	return (SUCCESS);
+}
+
+int		reset_terminal(struct s_term *term)
+{
+	(void)term;
 	return (SUCCESS);
 }

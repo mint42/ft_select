@@ -13,5 +13,8 @@
 #ifndef SELECT_H
 # define SELECT_H
 
+struct s_term;
+
+int		select(int argc, char **argv, struct s_term *term);
 
 #endif
