@@ -17,6 +17,7 @@
 int		print_error(enum e_error_code ec)
 {
 	const char *const errors[TOTAL_ERRORS] = {
+		"./ft_select [args]",
 		"$TERM environment variable not set",
 		"$TERM environment variable not recognized by termcaps",
 		"bad access to termcaps library"
@@ -24,5 +25,5 @@ int		print_error(enum e_error_code ec)
 
 	if (ec > -1)
 		ft_putendl_fd(errors[ec], STDERR_FILENO);
-	return (1);
+	return (ERROR);
 }
