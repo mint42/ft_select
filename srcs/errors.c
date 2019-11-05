@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:45:02 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/05 01:33:47 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/05 04:57:27 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ft_put.h"
 #include <unistd.h>
 
-static enum e_error_code	g_errno = 0;
+static enum e_error_code	g_errno;
 
 int		set_error(enum e_error_code ec)
 {

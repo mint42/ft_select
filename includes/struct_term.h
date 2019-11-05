@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:37 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/04 23:21:29 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/05 04:59:41 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ struct				s_term
 };
 
 int					setup_term(struct s_term *term);
-int					reset_term(struct s_term *term);
+int					reset_term(void);
 
 #endif

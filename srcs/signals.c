@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   select.c                                           :+:      :+:    :+:   */
+/*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 04:43:52 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/05 04:43:55 by rreedy           ###   ########.fr       */
+/*   Created: 2019/11/05 04:46:12 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/05 05:05:57 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
-#include "struct_arg.h"
-#include "struct_info.h"
 #include "struct_term.h"
-#include "ft_printf.h"
-#include <ft_mem.h>
+#include <signal.h>
+#include <stdlib.h>
 
-int			do_selecting(int argc, char **argv, struct s_term *term)
+static void		restore_and_exit(int sig)
 {
-	struct s_info	info;
-	struct s_arg	*args;
-	int				i;
+	(void)sig;
+	reset_term();
+	exit(ERROR);
+}
 
-	(void)term;
-	setup_info(&info);
-	if (setup_args(&args, &info, argc, argv) == ERROR)
-		return (ERROR);
-	i = 0;
-	while (i < argc - 1)
-	{
-		ft_printf("%s\n", (args[i]).name);
-		++i;
-	}
-	ft_memdel((void **)&args);
-	return (SUCCESS);
+void			setup_signal_catching(void)
+{
+	signal(SIGSEGV, restore_and_exit);
+	signal(SIGINT, restore_and_exit);
+	signal(SIGABRT, restore_and_exit);
+	signal(SIGILL, restore_and_exit);
+	signal(SIGTERM, restore_and_exit);
+	signal(SIGFPE, restore_and_exit);
 }

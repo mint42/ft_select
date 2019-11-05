@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:07 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/05 01:49:21 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/05 04:58:57 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include <term.h>
 #include <termios.h>
 #include <unistd.h>
+
+static struct termios	default_settings;
 
 static int	get_term_buffer(struct s_term *term)
 {
@@ -40,6 +42,7 @@ static int	get_term_settings(struct s_term *term)
 {
 	if (tcgetattr(STDIN_FILENO, &term->old_settings) != 0)
 		return (set_error(E_TCGETATTR));
+	ft_memcpy(&default_settings, &term->old_settings, sizeof(struct termios));
 	ft_memcpy(&term->new_settings, &term->old_settings, sizeof(struct termios));
 	term->new_settings.c_lflag = term->new_settings.c_lflag & ~(ICANON | ECHO);
 	term->new_settings.c_cc[VMIN] = 1;
@@ -59,9 +62,9 @@ int			setup_term(struct s_term *term)
 	return (SUCCESS);
 }
 
-int			reset_term(struct s_term *term)
+int			reset_term(void)
 {
-	if (tcsetattr(STDIN_FILENO, TCSADRAIN, &term->old_settings) != 0)
+	if (tcsetattr(STDIN_FILENO, TCSADRAIN, &default_settings) != 0)
 		return (set_error(E_TCGETATTR));
 	return (0);
 }

@@ -6,14 +6,29 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:32:44 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/05 01:36:08 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/05 05:04:59 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
 #include "select.h"
+#include "signals.h"
 #include "struct_term.h"
 #include <unistd.h>
+
+static int		ft_select(int argc, char **argv)
+{
+	struct s_term	term;
+	int				error_code;
+
+	setup_signal_catching();
+	if (setup_term(&term) == ERROR)
+		return (ERROR);
+	error_code = do_selecting(argc, argv, &term);
+	if (reset_term() == ERROR)
+		return (ERROR);
+	return (error_code);
+}
 
 int				main(int argc, char **argv)
 {

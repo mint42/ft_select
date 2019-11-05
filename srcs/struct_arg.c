@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:32:58 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/05 00:47:21 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/05 04:51:38 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void		setup_arg(struct s_arg *args, int argc, char **argv, int i)
 		(args[i]).active_next = i + 1;
 	(args)[i].finder_prev = 0;
 	(args)[i].finder_next = 0;
+	(args)[i].inactive_group_id = 0;
 }
 
 int				setup_args(struct s_arg **args, struct s_info *info, int argc,
