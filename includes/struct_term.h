@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   terminal.h                                         :+:      :+:    :+:   */
+/*   struct_term.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/01 01:24:05 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/01 01:25:01 by rreedy           ###   ########.fr       */
+/*   Created: 2019/11/04 22:33:37 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/04 22:43:14 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ struct				s_term
 	struct termios	new_settings;
 };
 
-int		setup_terminal(struct s_term *term);
-int		reset_terminal(struct s_term *term);
+int					setup_terminal(struct s_term *term);
+int					reset_terminal(struct s_term *term);
 
 #endif

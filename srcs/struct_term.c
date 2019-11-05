@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   terminal.c                                         :+:      :+:    :+:   */
+/*   struct_term.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/01 01:23:11 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/01 02:17:33 by rreedy           ###   ########.fr       */
+/*   Created: 2019/11/04 22:33:07 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/04 22:42:43 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int			setup_terminal(struct s_term *term)
 	return (SUCCESS);
 }
 
-int		reset_terminal(struct s_term *term)
+int			reset_terminal(struct s_term *term)
 {
 	(void)term;
 	return (SUCCESS);

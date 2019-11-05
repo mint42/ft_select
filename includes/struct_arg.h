@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   struct_arg.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/04 22:33:29 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/04 22:43:27 by rreedy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCT_ARG_H
 # define STRUCT_ARG_H
 
@@ -23,6 +35,7 @@ struct			s_arg
 	uint8_t		status;
 };
 
-int		setup_args(struct s_arg **args, struct s_info *info, int argc, char **argv);
+int				setup_args(struct s_arg **args, struct s_info *info, int argc,
+					char **argv);
 
 #endif
