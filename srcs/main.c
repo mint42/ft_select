@@ -6,25 +6,26 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:32:44 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/04 22:32:45 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/05 01:36:08 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
 #include "select.h"
 #include "struct_term.h"
+#include <unistd.h>
 
 int				main(int argc, char **argv)
 {
-	struct s_term	term;
+	int				error_code;
 
 	if (argc < 2)
-		return (print_error(E_USAGE));
-	if (setup_terminal(&term) == ERROR)
+	{
+		write(STDERR_FILENO, "./ft_select [args]", 18);
 		return (ERROR);
-	if (select(argc, argv, &term))
-		return (ERROR);
-	if (reset_terminal(&term) == ERROR)
-		return (ERROR);
-	return (SUCCESS);
+	}
+	error_code = ft_select(argc, argv);
+	if (error_code == ERROR)
+		print_error();
+	return (error_code);
 }

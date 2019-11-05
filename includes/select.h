@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:35:54 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/03 18:36:05 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/05 01:36:30 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 struct s_term;
 
-int		select(int argc, char **argv, struct s_term *term);
+int		ft_select(int argc, char **argv);
 
 #endif
