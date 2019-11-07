@@ -19,14 +19,11 @@
 # define INACTIVE 1
 # define SELECTED 2
 
-struct s_info;
-
 struct			s_arg
 {
 	char		*name;
 	uint32_t	len;
-	uint32_t	x_pos;
-	uint32_t	y_pos;
+	uint32_t	coordinate;
 	uint32_t	active_prev;
 	uint32_t	active_next;
 	uint32_t	finder_prev;
@@ -35,7 +32,7 @@ struct			s_arg
 	uint8_t		status;
 };
 
-int				setup_args(struct s_arg **args, struct s_info *info, int argc,
+int				setup_args(struct s_arg **args, uint32_t *max_arg_len, int argc,
 					char **argv);
 
 #endif

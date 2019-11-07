@@ -15,17 +15,23 @@
 
 # include <stdint.h>
 
-struct			s_info
+# define COLUMN_PADDING 4
+
+struct s_arg;
+
+struct				s_info
 {
-	uint32_t	term_width;
-	uint32_t	term_height;
-	uint32_t	max_name_len;
-	uint32_t	col_width;
-	uint8_t		columns;
-	uint8_t		rows;
-	uint8_t		cursor_position;
+	struct s_arg	*args;
+	uint32_t		n_args;
+	uint32_t		terminal_width;
+	uint32_t		terminal_height;
+	uint32_t		max_arg_len;
+	uint32_t		column_width;
+	uint8_t			n_columns;
+	uint8_t			n_rows;
+	uint8_t			cursor_coordinate;
 };
 
-void			setup_info(struct s_info *info);
+int					setup_info(struct s_info *info, int argc, char **argv);
 
 #endif

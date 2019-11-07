@@ -20,19 +20,17 @@
 int			do_selecting(int argc, char **argv, struct s_term *term)
 {
 	struct s_info	info;
-	struct s_arg	*args;
-	int				i;
+	uint32_t		i;
 
 	(void)term;
-	setup_info(&info);
-	if (setup_args(&args, &info, argc, argv) == ERROR)
+	if (setup_info(&info, argc, argv) == ERROR)
 		return (ERROR);
 	i = 0;
-	while (i < argc - 1)
+	while (i < info.n_args)
 	{
-		ft_printf("%s\n", (args[i]).name);
+		ft_printf("%s\n", ((info.args)[i]).name);
 		++i;
 	}
-	ft_memdel((void **)&args);
+	ft_memdel((void **)&(info.args));
 	return (SUCCESS);
 }

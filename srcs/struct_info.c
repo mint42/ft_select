@@ -10,15 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "errors.h"
 #include "struct_info.h"
+#include "struct_arg.h"
+#include <ncurses.h>
+#include <term.h>
 
-void	setup_info(struct s_info *info)
+int		setup_info(struct s_info *info, int argc, char **argv)
 {
-	info->term_width = 0;
-	info->term_height = 0;
-	info->max_name_len = 0;
-	info->col_width = 0;
-	info->columns = 0;
-	info->rows = 0;
-	info->cursor_position = 0;
+	info->max_arg_len = 0;
+	if (setup_args(&(info->args), &(info->max_arg_len), argc, argv) == ERROR)
+		return (ERROR);
+	info->n_args = argc - 1;
+	info->terminal_width = tgetnum("co");
+	info->terminal_height = tgetnum("li");
+	info->column_width = info->max_arg_len + COLUMN_PADDING;
+	info->n_columns = info->terminal_width / info->column_width;
+	info->n_rows = info->n_args / info->n_columns;
+	if (info->n_args % info->n_columns)
+		++(info->n_rows);
+	info->cursor_coordinate = 0;
+	return (SUCCESS);
 }

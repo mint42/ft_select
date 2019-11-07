@@ -34,7 +34,7 @@ static void		setup_arg(struct s_arg *args, int argc, char **argv, int i)
 	(args)[i].inactive_group_id = 0;
 }
 
-int				setup_args(struct s_arg **args, struct s_info *info, int argc,
+int				setup_args(struct s_arg **args, uint32_t *max_arg_len, int argc,
 					char **argv)
 {
 	int		i;
@@ -46,8 +46,8 @@ int				setup_args(struct s_arg **args, struct s_info *info, int argc,
 	while (i < argc)
 	{
 		setup_arg(*args, argc, argv, i);
-		if (((*args)[i]).len > info->max_name_len)
-			info->max_name_len = ((*args)[i]).len;
+		if (((*args)[i]).len > *max_arg_len)
+			*max_arg_len = ((*args)[i]).len;
 		++i;
 	}
 	return (SUCCESS);
