@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.h                                           :+:      :+:    :+:   */
+/*   tc.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/01 00:07:56 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 03:18:48 by rreedy           ###   ########.fr       */
+/*   Created: 2019/11/10 02:43:14 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/10 03:35:21 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERRORS_H
-# define ERRORS_H
+#ifndef TC_H
+# define TC_H
 
-# define SUCCESS 0
-# define ERROR 1
+# include <stdint.h>
 
-# define SET_ERROR 1
-# define GET_ERROR 2
-
-enum	e_error_code
-{
-	E_MALLOC = -1,
-	E_TERM_NOT_SPECIFIED,
-	E_TERM_NOT_DEFINED,
-	E_TCGETATTR,
-	E_TCSETATTR,
-	E_TGETENT,
-	E_TGETSTR,
-	TOTAL_ERRORS,
-};
-
-int		set_error(enum e_error_code ec);
-void	print_error(void);
+int		tc_move_cur(uint32_t x_pos, uint32_t y_pos);
+int		tc_put(char *tc_id);
 
 #endif

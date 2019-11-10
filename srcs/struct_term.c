@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:07 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/09 22:22:07 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 03:38:05 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 
 static void	hold_settings(struct termios *settings, uint8_t action)
 {
-	static struct termios	hold_settings;
+	static struct termios	held_settings;
 
 	if (action == SET_SETTINGS)
-		ft_memcpy(&hold_settings, settings, sizeof(struct termios));
+		ft_memcpy(&held_settings, settings, sizeof(struct termios));
 	else if (action == GET_SETTINGS)
-		*settings = hold_settings;
+		*settings = held_settings;
 }
 
 static int	get_term_buffer(struct s_term *term)

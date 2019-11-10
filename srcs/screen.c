@@ -6,46 +6,28 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:21:31 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/09 21:56:16 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 02:43:08 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
-#include "ft_put.h"
-#include <curses.h>
-#include <term.h>
+#include "tc.h"
 #include <unistd.h>
 
-static int	ft_putnbr_stdin(int n)
+int		setup_screen(void)
 {
-	return (write(STDIN_FILENO, &n, 1));
-}
-
-static int	put_tc(char *id)
-{
-	char	*termcap_string;
-
-	termcap_string = tgetstr(id, 0);
-	if (!termcap_string)
-		return (set_error(E_TGETSTR));
-	tputs(termcap_string, 1, ft_putnbr_stdin);
-	return (SUCCESS);
-}
-
-int			setup_screen(void)
-{
-	if (put_tc("ti") == ERROR)
+	if (tc_put("ti") == ERROR)
 		return (ERROR);
-	if (put_tc("vi") == ERROR)
+	if (tc_put("vi") == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }
 
-int			reset_screen(void)
+int		reset_screen(void)
 {
-	if (put_tc("te") == ERROR)
+	if (tc_put("te") == ERROR)
 		return (ERROR);
-	if (put_tc("ve") == ERROR)
+	if (tc_put("ve") == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }

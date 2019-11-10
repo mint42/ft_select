@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:45:02 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/09 22:21:40 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 03:21:25 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,8 @@ void		print_error(void)
 
 	hold_error(&ec, GET_ERROR);
 	if (ec > -1)
+	{
+		ft_putstr("ft_select: error: ");
 		ft_putendl_fd(errors[ec], STDERR_FILENO);
+	}
 }
