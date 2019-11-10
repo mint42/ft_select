@@ -20,27 +20,17 @@ Aside from the basic features mentioned in the [ft_select](https://github.com/mi
 
 - key support
 
-	__h__	-	left
-
-	__j__	-	down 
-
-	__k__	-	up
-
-	__l__	-	right
-
-	__a__	-	select all
-
-	__d__	-	delete
-
-	__r__	-	restore to default
-
-	__u__	-	undo delete
-
-	__q__	-	quit
-
-	__?__	-	help
-
-	__/__	-	finder
+	- __h__	-	left
+	- __j__	-	down 
+	- __k__	-	up
+	- __l__	-	right
+	- __a__	-	select all
+	- __d__	-	delete
+	- __r__	-	restore to default
+	- __u__	-	undo delete
+	- __q__	-	quit
+	- __?__	-	help
+	- __/__	-	finder
 
 - scroll support
 
