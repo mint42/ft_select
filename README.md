@@ -20,39 +20,39 @@ Aside from the basic features mentioned in the __FT_SELECT__ section, here is th
 
 - key support
 
-	__h__	left
+	__h__		left
 
-	__j__	down 
+	__j__		down 
 
-	__k__	up
+	__k__		up
 
-	__l__	right
+	__l__		right
 
-	__a__	select all
+	__a__		select all
 
-	__d__	delete
+	__d__		delete
 
-	__r__	restore to default
+	__r__		restore to default
 
-	__u__	undo delete
+	__u__		undo delete
 
-	__q__	quit
+	__q__		quit
 
-	__?__	help
+	__?__		help
 
-	__/__	finder
+	__/__		finder
 
 - scroll support
 
 ## References 
 
-https://learn.sparkfun.com/tutorials/terminal-basics/all
-https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html
-https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html#SEC23
-http://man7.org/linux/man-pages/man3/termios.3.html
-https://www.gnu.org/software/libc/manual/html_node/Setting-Modes.html#Setting-Modes
-https://www.gnu.org/software/libc/manual/html_node/Mode-Data-Types.html
-https://www.gnu.org/software/libc/manual/html_node/Noncanonical-Input.html#Noncanonical-Input
+- https://learn.sparkfun.com/tutorials/terminal-basics/all
+- https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html
+- https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html#SEC23
+- http://man7.org/linux/man-pages/man3/termios.3.html
+- https://www.gnu.org/software/libc/manual/html_node/Setting-Modes.html#Setting-Modes
+- https://www.gnu.org/software/libc/manual/html_node/Mode-Data-Types.html
+- https://www.gnu.org/software/libc/manual/html_node/Noncanonical-Input.html#Noncanonical-Input
 
 ## Author
 
