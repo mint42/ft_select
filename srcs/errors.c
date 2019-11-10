@@ -6,25 +6,35 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:45:02 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/09 17:48:30 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/09 20:32:52 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
 #include "ft_put.h"
+#include <stdint.h>
 #include <unistd.h>
 
-static enum e_error_code	g_errno;
-
-int		set_error(enum e_error_code ec)
+static void	hold_error(enum e_error_code *ec, uint8_t action)
 {
-	g_errno = ec;
+	static enum e_error_code	*held_ec;
+
+	if (action == SET_ERROR)
+		held_ec = ec;
+	else if (action == GET_ERROR)
+		ec = held_ec;
+}
+
+int			set_error(enum e_error_code ec)
+{
+	hold_error(&ec, SET_ERROR);
 	return (ERROR);
 }
 
-void	print_error(void)
+void		print_error(void)
 {
-	const char *const errors[TOTAL_ERRORS] = {
+	enum e_error_code	ec;
+	const char *const	errors[TOTAL_ERRORS] = {
 		"$TERM environment variable not set",
 		"$TERM environment variable not recognized by termcaps",
 		"tcgetattr() failed",
@@ -33,6 +43,7 @@ void	print_error(void)
 		"tgetstr() failed",
 	};
 
-	if (g_errno > -1)
-		ft_putendl_fd(errors[g_errno], STDERR_FILENO);
+	hold_error(&ec, GET_ERROR);
+	if (ec > -1)
+		ft_putendl_fd(errors[ec], STDERR_FILENO);
 }

@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 00:07:56 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/09 17:48:29 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/09 20:23:15 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # define SUCCESS 0
 # define ERROR 1
+
+# define SET_ERROR 1
+# define GET_ERROR 2
 
 enum	e_error_code
 {
