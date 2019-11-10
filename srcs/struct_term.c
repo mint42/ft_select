@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:07 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 07:09:38 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 08:39:53 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	get_term_buffer(struct s_term *term)
 	int		error_code;
 
 	term_type = getenv("TERM");
-	if (!term_type)
+	if (!term_type || !*term_type)
 		return (set_error(E_TERM_NOT_SPECIFIED));
 	error_code = tgetent(term->term_buffer, term_type);
 	if (error_code < 0)
