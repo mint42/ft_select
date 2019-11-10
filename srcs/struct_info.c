@@ -6,15 +6,17 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:01 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 03:39:22 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 05:55:06 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
 #include "struct_info.h"
 #include "struct_arg.h"
-#include <ncurses.h>
+#include <curses.h>
 #include <term.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
 
 void	hold_info(struct s_info **info, uint8_t action)
 {
@@ -26,26 +28,23 @@ void	hold_info(struct s_info **info, uint8_t action)
 		*info = held_info;
 }
 
-void	update_terminal_size(void)
+void	update_window_size(void)
 {
 	struct s_info	*info;
-	uint32_t		terminal_width;
-	uint32_t		terminal_height;
+	struct winsize	window;
 
 	hold_info(&info, GET_INFO);
-	terminal_width = tgetnum("co");
-	terminal_height = tgetnum("li");
-	if (info->max_arg_len > terminal_width)
+	ioctl(STDIN_FILENO, TIOCGWINSZ, &window);
+	if (info->max_arg_len > window.ws_col)
 	{
-		info->column_width = terminal_width;
+		info->column_width = window.ws_col;
 		info->n_columns = 1;
 		info->n_rows = info->n_active_args;
 	}
 	else
 	{
 		info->column_width = info->max_arg_len;
-		info->n_columns = terminal_width / (info->column_width +
-			COLUMN_PADDING);
+		info->n_columns = window.ws_col / (info->column_width + COLUMN_PADDING);
 		info->n_rows = info->n_active_args / info->n_columns;
 		if (info->n_active_args % info->n_columns)
 			++(info->n_rows);
@@ -62,6 +61,6 @@ int		setup_info(struct s_info *info, int argc, char **argv)
 	info->starting_arg = 0;
 	info->cursor_arg = 0;
 	info->cursor_coord = 0;
-	update_terminal_size();
+	update_window_size();
 	return (SUCCESS);
 }

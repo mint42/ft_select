@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   screen.h                                           :+:      :+:    :+:   */
+/*   print.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/09 17:21:48 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 05:21:37 by rreedy           ###   ########.fr       */
+/*   Created: 2019/11/10 05:23:46 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/10 05:32:16 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCREEN_H
-# define SCREEN_H
+#ifndef PRINT_H
+# define PRINT_H
 
-int		clear_screen();
-int		setup_screen();
-int		reset_screen();
+struct s_info;
+
+void	print_screen(void);
 
 #endif
