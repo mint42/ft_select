@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:32:44 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/09 17:44:56 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/09 22:11:10 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int				main(int argc, char **argv)
 
 	if (argc < 2)
 	{
-		write(STDERR_FILENO, "./ft_select [args]", 18);
+		write(STDERR_FILENO, "./ft_select [args]\n", 19);
 		return (ERROR);
 	}
 	error_code = ft_select(argc, argv);
