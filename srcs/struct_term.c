@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:07 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/09 17:47:42 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/09 22:22:07 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,15 @@
 #include <termios.h>
 #include <unistd.h>
 
-static struct termios old_settings;
+static void	hold_settings(struct termios *settings, uint8_t action)
+{
+	static struct termios	hold_settings;
+
+	if (action == SET_SETTINGS)
+		ft_memcpy(&hold_settings, settings, sizeof(struct termios));
+	else if (action == GET_SETTINGS)
+		*settings = hold_settings;
+}
 
 static int	get_term_buffer(struct s_term *term)
 {
@@ -40,8 +48,11 @@ static int	get_term_buffer(struct s_term *term)
 
 static int	get_term_settings(struct s_term *term)
 {
+	struct termios	old_settings;
+
 	if (tcgetattr(STDIN_FILENO, &old_settings) != 0)
 		return (set_error(E_TCGETATTR));
+	hold_settings(&old_settings, SET_SETTINGS);
 	ft_memcpy(&term->new_settings, &old_settings, sizeof(struct termios));
 	term->new_settings.c_lflag = term->new_settings.c_lflag & ~(ICANON | ECHO);
 	term->new_settings.c_cc[VMIN] = 1;
@@ -63,7 +74,10 @@ int			setup_term(struct s_term *term)
 
 int			reset_term(void)
 {
-	if (tcsetattr(STDIN_FILENO, TCSADRAIN, &old_settings) != 0)
+	struct termios	settings;
+
+	hold_settings(&settings, GET_SETTINGS);
+	if (tcsetattr(STDIN_FILENO, TCSADRAIN, &settings) != 0)
 		return (set_error(E_TCGETATTR));
 	return (0);
 }
