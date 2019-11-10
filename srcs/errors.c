@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:45:02 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/09 20:32:52 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/09 22:21:40 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 
 static void	hold_error(enum e_error_code *ec, uint8_t action)
 {
-	static enum e_error_code	*held_ec;
+	static enum e_error_code	held_ec;
 
 	if (action == SET_ERROR)
-		held_ec = ec;
+		held_ec = *ec;
 	else if (action == GET_ERROR)
-		ec = held_ec;
+		*ec = held_ec;
 }
 
 int			set_error(enum e_error_code ec)
