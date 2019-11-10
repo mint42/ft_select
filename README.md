@@ -2,9 +2,9 @@
 
 ft_select is a systems project in the 42 curriculum. It introduces the concept of termcaps, and terminal manipulation in noncanonical mode. The goal of ft_select is to print a list of arguments, in an alternate screen, and to perform the following actions on that list:
 
-- Use _arrow keys_ to move circularly through the list.
-- Select and deselect arguments using the _space bar key_.
-- Validate selections using _return key_ and return the list of selected arguments to the shell.
+- Use arrow keys to move circularly through the list.
+- Select and deselect arguments using the space bar key.
+- Validate selections using return key and return the list of selected arguments to the shell.
 
 ## Getting Started
 
@@ -20,27 +20,27 @@ Aside from the basic features mentioned in the __FT_SELECT__ section, here is th
 
 - key support
 
-_h key_ | left
+	h | left
 
-_j key_ | down 
+	j | down 
 
-_k key_ | up
+	k | up
 
-_l key_ | right
+	l | right
 
-_a key_ | select all
+	a | select all
 
-_d key_ | delete
+	d | delete
 
-_r key_ | restore to default
+	r | restore to default
 
-_u key_ | undo delete
+	u | undo delete
 
-_q key_ | quit
+	q | quit
 
-_? key_ | help
+	? | help
 
-_/ key_ | finder				
+	/ | finder
 
 - scroll support
 
