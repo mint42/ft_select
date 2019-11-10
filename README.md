@@ -20,27 +20,27 @@ Aside from the basic features mentioned in the __FT_SELECT__ section, here is th
 
 - key support
 
-	h	left
+	__h__	left
 
-	j	down 
+	__j__	down 
 
-	k	up
+	__k__	up
 
-	l	right
+	__l__	right
 
-	a	select all
+	__a__	select all
 
-	d	delete
+	__d__	delete
 
-	r	restore to default
+	__r__	restore to default
 
-	u	undo delete
+	__u__	undo delete
 
-	q	quit
+	__q__	quit
 
-	?	help
+	__?__	help
 
-	/	finder
+	__/__	finder
 
 - scroll support
 
