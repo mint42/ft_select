@@ -16,7 +16,7 @@ usage: ./ft_select [args]
 
 ## Features
 
-Aside from the basic features mentioned in the __FT_SELECT__ section, here is the full list of features [to be] implemented
+Aside from the basic features mentioned in the [ft_select](https://github.com/mint42/ft_select#ft_select) section, here is the full list of features [to be] implemented
 
 - key support
 
