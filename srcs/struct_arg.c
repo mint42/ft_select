@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:32:58 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/09 20:31:24 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/09 21:50:38 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 #include "ft_mem.h"
 #include "ft_str.h"
 #include <stdint.h>
+
+void			hold_args(struct s_arg **args, uint8_t action)
+{
+	static struct s_arg		**held_args;
+
+	if (action == SET_ARGS)
+		held_args = args;
+	else if (action == GET_ARGS)
+		args = held_args;
+}
 
 static void		setup_arg(struct s_arg *args, int argc, char **argv, int i)
 {
@@ -53,14 +63,4 @@ int				setup_args(struct s_arg **args, uint32_t *max_arg_len, int argc,
 	}
 	hold_args(args, SET_ARGS);
 	return (SUCCESS);
-}
-
-void			hold_args(struct s_arg **args, uint8_t action)
-{
-	static struct s_arg		**held_args;
-
-	if (action == SET_ARGS)
-		held_args = args;
-	else if (action == GET_ARGS)
-		args = held_args;
 }
