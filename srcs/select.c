@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:43:52 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/05 04:43:55 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/09 19:51:08 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "struct_info.h"
 #include "struct_term.h"
 #include "ft_printf.h"
-#include <ft_mem.h>
+#include "ft_mem.h"
 
 int			do_selecting(int argc, char **argv, struct s_term *term)
 {
