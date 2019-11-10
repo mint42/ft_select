@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:45:02 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/05 04:57:27 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/09 17:48:30 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ void	print_error(void)
 	const char *const errors[TOTAL_ERRORS] = {
 		"$TERM environment variable not set",
 		"$TERM environment variable not recognized by termcaps",
-		"tgetent() failed",
 		"tcgetattr() failed",
 		"tcsetattr() failed",
+		"tgetent() failed",
+		"tgetstr() failed",
 	};
 
 	if (g_errno > -1)

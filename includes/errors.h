@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 00:07:56 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/05 01:33:46 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/09 17:48:29 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ enum	e_error_code
 	E_USAGE,
 	E_TERM_NOT_SPECIFIED,
 	E_TERM_NOT_DEFINED,
-	E_TGETENT,
 	E_TCGETATTR,
 	E_TCSETATTR,
+	E_TGETENT,
+	E_TGETSTR,
 	TOTAL_ERRORS,
 };
 
