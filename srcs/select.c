@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:43:52 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 03:28:39 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 04:55:17 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ void	print_string(struct s_arg *arg, uint32_t coord, struct s_info *info)
 	x_pos = (coord % info->n_columns) * (info->column_width + COLUMN_PADDING);
 	y_pos = coord / info->n_columns;
 	tc_move_cur(x_pos, y_pos);
-	ft_printfd(STDIN_FILENO, "%-*s", COLUMN_PADDING, arg->name);
+	if (arg->status == SELECTED)
+		ft_printfd(STDIN_FILENO, "\e[7m");
+	if (coord == info->cursor_coord)
+		ft_printfd(STDIN_FILENO, "\e[4m");
+	ft_printfd(STDIN_FILENO, "%-*s\e[0m", COLUMN_PADDING, arg->name);
 }
 
 void	print_screen(struct s_info *info)
