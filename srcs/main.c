@@ -6,11 +6,12 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:32:44 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/05 05:04:59 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/09 17:44:56 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
+#include "screen.h"
 #include "select.h"
 #include "signals.h"
 #include "struct_term.h"
@@ -24,7 +25,11 @@ static int		ft_select(int argc, char **argv)
 	setup_signal_catching();
 	if (setup_term(&term) == ERROR)
 		return (ERROR);
+	if (setup_screen() == ERROR)
+		return (ERROR);
 	error_code = do_selecting(argc, argv, &term);
+	if (reset_screen() == ERROR)
+		return (ERROR);
 	if (reset_term() == ERROR)
 		return (ERROR);
 	return (error_code);

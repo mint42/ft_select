@@ -6,11 +6,12 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:46:12 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/05 05:05:57 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/09 17:37:49 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
+#include "screen.h"
 #include "struct_term.h"
 #include <signal.h>
 #include <stdlib.h>
@@ -18,6 +19,7 @@
 static void		restore_and_exit(int sig)
 {
 	(void)sig;
+	reset_screen();
 	reset_term();
 	exit(ERROR);
 }
