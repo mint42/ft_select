@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:01 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 05:55:06 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 07:02:29 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ void	hold_info(struct s_info **info, uint8_t action)
 		*info = held_info;
 }
 
-void	update_window_size(void)
+int		update_window_size(struct s_info *info)
 {
-	struct s_info	*info;
 	struct winsize	window;
 
-	hold_info(&info, GET_INFO);
-	ioctl(STDIN_FILENO, TIOCGWINSZ, &window);
+	if (ioctl(STDIN_FILENO, TIOCGWINSZ, &window) == -1)
+		return (set_error(E_IOCTL));
+	if (window.ws_col < 4 || window.ws_row < 4)
+		return (set_error(E_MIN));
 	if (info->max_arg_len > window.ws_col)
 	{
 		info->column_width = window.ws_col;
@@ -45,10 +46,13 @@ void	update_window_size(void)
 	{
 		info->column_width = info->max_arg_len;
 		info->n_columns = window.ws_col / (info->column_width + COLUMN_PADDING);
+		if (info->n_columns == 0)
+			return (set_error(E_BAD_COL_SIZE));
 		info->n_rows = info->n_active_args / info->n_columns;
 		if (info->n_active_args % info->n_columns)
 			++(info->n_rows);
 	}
+	return (SUCCESS);
 }
 
 int		setup_info(struct s_info *info, int argc, char **argv)
@@ -61,6 +65,7 @@ int		setup_info(struct s_info *info, int argc, char **argv)
 	info->starting_arg = 0;
 	info->cursor_arg = 0;
 	info->cursor_coord = 0;
-	update_window_size();
+	if (update_window_size(info) == ERROR)
+		return (ERROR);
 	return (SUCCESS);
 }

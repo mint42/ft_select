@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:32:44 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 03:29:18 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 06:54:49 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int		ft_select(int argc, char **argv)
 	error_code = do_selecting(argc, argv, &term);
 	if (reset_screen() == ERROR)
 		return (ERROR);
-	if (reset_term() == ERROR)
+	if (reset_term(&term) == ERROR)
 		return (ERROR);
 	return (error_code);
 }

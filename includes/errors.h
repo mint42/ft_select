@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 00:07:56 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 03:18:48 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 06:51:53 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ enum	e_error_code
 	E_TCSETATTR,
 	E_TGETENT,
 	E_TGETSTR,
+	E_IOCTL,
+	E_BAD_COL_SIZE,
+	E_MIN,
 	TOTAL_ERRORS,
 };
 

@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:45:02 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 03:21:25 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 06:51:45 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ void		print_error(void)
 		"tcsetattr() failed",
 		"tgetent() failed",
 		"tgetstr() failed",
+		"ioctl() failed",
+		"Insufficient columns",
+		"minimum term size exceeded",
 	};
 
 	hold_error(&ec, GET_ERROR);

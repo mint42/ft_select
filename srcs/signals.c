@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:46:12 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 05:55:28 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 07:05:12 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,32 @@
 #include <signal.h>
 #include <stdlib.h>
 
-static void		resize(int sig)
-{
-	(void)sig;
-	if (clear_screen())
-		return ;
-	update_window_size();
-	print_screen();
-}
-
 static void		restore_and_exit(int sig)
 {
+	struct s_term	*term;
+
 	(void)sig;
-	reset_screen();
-	reset_term();
+	hold_term(&term, GET_TERM);
+	if (reset_screen(term) == ERROR)
+		exit(ERROR);
+	if (reset_term(term) == ERROR)
+		exit(ERROR);
+	print_error();
 	exit(ERROR);
+}
+
+static void		resize(int sig)
+{
+	struct s_info	*info;
+
+	(void)sig;
+	hold_info(&info, GET_INFO);
+	if (clear_screen(info) == ERROR)
+		restore_and_exit(0);
+	if (update_window_size(info) == ERROR)
+		restore_and_exit(0);
+	if (print_screen(info) == ERROR)
+		restore_and_exit(0);
 }
 
 void			setup_signal_catching(void)

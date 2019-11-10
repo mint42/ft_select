@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:32 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 05:55:15 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 06:52:08 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ struct				s_info
 };
 
 void				hold_info(struct s_info **info, uint8_t action);
-void				update_window_size(void);
+int					update_window_size(struct s_info *info);
 int					setup_info(struct s_info *info, int argc, char **argv);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 05:23:46 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 05:32:16 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 06:46:16 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 struct s_info;
 
-void	print_screen(void);
+int		print_screen(struct s_info *info);
 
 #endif

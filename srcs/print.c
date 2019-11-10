@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 05:22:27 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 05:31:49 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 06:45:04 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ static void	print_string(struct s_arg *arg, uint32_t coord, struct s_info *info)
 		ft_printfd(STDIN_FILENO, "%-*s", COLUMN_PADDING, arg->name);
 }
 
-void		print_screen(void)
+int			print_screen(struct s_info *info)
 {
-	struct s_info	*info;
 	uint32_t		coord;
 	uint32_t		arg;
 
-	hold_info(&info, GET_INFO);
+	if (info->n_columns == 0)
+		return (set_error(E_BAD_COL_SIZE));
 	arg = info->starting_arg;
 	coord = 0;
 	while (coord < info->n_active_args)
@@ -57,4 +57,5 @@ void		print_screen(void)
 		arg = (info->args)[arg].active_next;
 		++coord;
 	}
+	return (SUCCESS);
 }
