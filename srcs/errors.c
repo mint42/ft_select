@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:45:02 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 06:51:45 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 08:25:43 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void		print_error(void)
 {
 	enum e_error_code	ec;
 	const char *const	errors[TOTAL_ERRORS] = {
+		0,
 		"$TERM environment variable not set",
 		"$TERM environment variable not recognized by termcaps",
 		"tcgetattr() failed",
@@ -47,7 +48,7 @@ void		print_error(void)
 	};
 
 	hold_error(&ec, GET_ERROR);
-	if (ec > -1)
+	if (ec > 1)
 	{
 		ft_putstr("ft_select: error: ");
 		ft_putendl_fd(errors[ec], STDERR_FILENO);

@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 00:07:56 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 06:51:53 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/10 08:24:50 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 enum	e_error_code
 {
-	E_MALLOC = -1,
+	E_MALLOC = 1,
 	E_TERM_NOT_SPECIFIED,
 	E_TERM_NOT_DEFINED,
 	E_TCGETATTR,
