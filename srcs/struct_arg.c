@@ -21,7 +21,7 @@ static void		setup_arg(struct s_arg *args, int argc, char **argv, int i)
 {
 	(args[i]).name = argv[i + 1];
 	(args[i]).len = ft_strlen((args[i]).name);
-	(args[i]).status = ACTIVE;
+	(args[i]).status = UNSELECTED;
 	if (i == 0)
 		(args[i]).active_prev = argc - 1;
 	else
@@ -40,13 +40,13 @@ int				setup_args(struct s_arg **args, uint32_t *max_arg_len, int argc,
 {
 	int		i;
 
-	*args = (struct s_arg *)ft_memalloc(sizeof(struct s_arg) * argc);
+	*args = (struct s_arg *)ft_memalloc(sizeof(struct s_arg) * argc - 1);
 	if (!*args)
 		return (set_error(E_MALLOC));
 	i = 0;
 	while (i < argc)
 	{
-		setup_arg(*args, argc, argv, i);
+		setup_arg(*args, argc - 1, argv, i);
 		if (((*args)[i]).len > *max_arg_len)
 			*max_arg_len = ((*args)[i]).len;
 		++i;

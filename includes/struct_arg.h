@@ -15,9 +15,9 @@
 
 # include <stdint.h>
 
-# define ACTIVE 0
-# define INACTIVE 1
-# define SELECTED 2
+# define DELETED 0
+# define SELECTED 1
+# define UNSELECTED 2
 
 struct			s_arg
 {

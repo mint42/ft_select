@@ -17,7 +17,7 @@
 #include "ft_printf.h"
 #include <unistd.h>
 
-static void	print_string(struct s_arg *arg, uint32_t coord, struct s_info *info)
+void	print_string(struct s_arg *arg, uint32_t coord, struct s_info *info)
 {
 	uint32_t	x_pos;
 	uint32_t	y_pos;
@@ -44,8 +44,8 @@ static void	print_string(struct s_arg *arg, uint32_t coord, struct s_info *info)
 
 int			print_screen(struct s_info *info)
 {
-	uint32_t		coord;
-	uint32_t		arg;
+	uint32_t	coord;
+	uint32_t	arg;
 
 	if (info->n_columns == 0)
 		return (set_error(E_BAD_COL_SIZE));
@@ -53,8 +53,8 @@ int			print_screen(struct s_info *info)
 	coord = 0;
 	while (coord < info->n_active_args)
 	{
-		print_string(&((info->args)[arg]), coord, info);
-		arg = (info->args)[arg].active_next;
+		print_string(&(info->args[arg]), coord, info);
+		arg = info->args[arg].active_next;
 		++coord;
 	}
 	return (SUCCESS);

@@ -31,8 +31,8 @@ struct				s_info
 	uint32_t		cursor_coord;
 	uint32_t		max_arg_len;
 	uint32_t		column_width;
-	uint8_t			n_columns;
-	uint8_t			n_rows;
+	uint32_t		n_columns;
+	uint32_t		n_rows;
 };
 
 void				hold_info(struct s_info **info, uint8_t action);
