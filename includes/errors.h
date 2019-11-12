@@ -13,6 +13,7 @@
 #ifndef ERRORS_H
 # define ERRORS_H
 
+# define BREAK (-1)
 # define SUCCESS 0
 # define ERROR 1
 
@@ -29,9 +30,9 @@ enum	e_error_code
 	E_TGETENT,
 	E_TGETSTR,
 	E_IOCTL,
+	E_READ,
 	E_BAD_COL_SIZE,
 	E_MIN,
-	E_READ,
 	TOTAL_ERRORS,
 };
 

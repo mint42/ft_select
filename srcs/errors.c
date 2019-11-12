@@ -44,9 +44,9 @@ void		print_error(void)
 		"tgetent() failed",
 		"tgetstr() failed",
 		"ioctl() failed",
+		"read() failed",
 		"Insufficient columns",
 		"minimum term size exceeded",
-		"read() failed",
 	};
 
 	hold_error(&ec, GET_ERROR);
