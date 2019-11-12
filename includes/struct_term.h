@@ -19,9 +19,11 @@
 # define SET_TERM 1
 # define GET_TERM 2
 
+# define TERM_BUFF_SIZE 2048
+
 struct				s_term
 {
-	char			*term_buffer;
+	char			term_buffer[TERM_BUFF_SIZE];
 	struct termios	old_settings;
 	struct termios	new_settings;
 };

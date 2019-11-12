@@ -63,7 +63,6 @@ static int	get_term_settings(struct s_term *term)
 int			setup_term(struct s_term *term)
 {
 	hold_term(&term, SET_TERM);
-	term->term_buffer = 0;
 	if (get_term_buffer(term) == ERROR)
 		return (ERROR);
 	if (get_term_settings(term) == ERROR)
