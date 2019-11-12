@@ -1,5 +1,8 @@
 ideas:
 
+change names to restore
+max arg len handle when bigger than screen
+
 a - select all
 c - clear all selected
 d - restore to default
