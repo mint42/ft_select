@@ -10,7 +10,7 @@ int		action_down(struct s_info *info)
 	uint32_t	prev_cursor_coord;
 	uint32_t	i;
 
-	if (info->n_active_args <= 1)
+	if (info->n_active_args == 1)
 		return (SUCCESS);
 	prev_cursor_arg = info->cursor_arg;
 	prev_cursor_coord = info->cursor_coord;

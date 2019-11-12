@@ -4,10 +4,6 @@
 #include "struct_arg.h"
 #include <stdint.h>
 
-/*
-** Gets run when the cursor is NOT on the top row
-*/
-
 static void		move_cursor_up(struct s_info *info)
 {
 	uint32_t	i;
@@ -23,10 +19,6 @@ static void		move_cursor_up(struct s_info *info)
 		++i;
 	}
 }
-
-/*
-** Only gets run when the cursor is on the top row
-*/
 
 static void		move_cursor_down_and_left(struct s_info *info)
 {
@@ -53,7 +45,7 @@ int				action_up(struct s_info *info)
 	uint32_t	prev_cursor_arg;
 	uint32_t	prev_cursor_coord;
 
-	if (info->n_active_args <= 1)
+	if (info->n_active_args == 1)
 		return (SUCCESS);
 	prev_cursor_arg = info->cursor_arg;
 	prev_cursor_coord = info->cursor_coord;

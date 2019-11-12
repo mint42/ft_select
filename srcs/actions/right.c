@@ -9,7 +9,7 @@ int		action_right(struct s_info *info)
 	uint32_t	prev_cursor_arg;
 	uint32_t	prev_cursor_coord;
 
-	if (info->n_active_args <= 1)
+	if (info->n_active_args == 1)
 		return (SUCCESS);
 	prev_cursor_arg = info->cursor_arg;
 	prev_cursor_coord = info->cursor_coord;
