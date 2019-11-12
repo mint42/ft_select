@@ -19,6 +19,8 @@
 # define SELECTED 1
 # define UNSELECTED 2
 
+struct s_info;
+
 struct			s_arg
 {
 	char		*name;
@@ -31,7 +33,6 @@ struct			s_arg
 	uint8_t		status;
 };
 
-int				setup_args(struct s_arg **args, uint32_t *max_arg_len, int argc,
-					char **argv);
+int				setup_args(struct s_info *info, char **argv);
 
 #endif

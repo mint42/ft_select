@@ -16,6 +16,7 @@
 #include "struct_info.h"
 #include "struct_term.h"
 #include "ft_mem.h"
+#include "ft_str.h"
 #include <signal.h>
 #include <stdlib.h>
 
@@ -31,6 +32,7 @@ static void		restore_and_exit(int sig)
 		exit(ERROR);
 	if (reset_term(term) == ERROR)
 		exit(ERROR);
+	ft_strdel(&(info->selected));
 	ft_memdel((void **)&(info->args));
 	print_error();
 	exit(ERROR);

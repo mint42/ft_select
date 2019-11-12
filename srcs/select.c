@@ -18,7 +18,7 @@
 #include "ft_mem.h"
 #include <unistd.h>
 
-static int		execute_action(uint32_t index, struct s_info *info)
+static int		execute_action(int32_t index, struct s_info *info)
 {
 	static int		(*action_table[])() = {
 		action_left,
@@ -37,14 +37,12 @@ static int		execute_action(uint32_t index, struct s_info *info)
 		action_search_mode,
 	};
 
-	if (action_table[index](info) == ERROR)
-		return (ERROR);
-	return (SUCCESS);
+	return (action_table[index](info));
 }
 
 static int		get_action(uint64_t buff)
 {
-	int		index;
+	int32_t		index;
 
 	index = 0;
 	while  (index < TOTAL_ACTION_CODES)
@@ -56,23 +54,20 @@ static int		get_action(uint64_t buff)
 	return (-1);
 }
 
-int				do_selecting(int argc, char **argv, struct s_term *term)
+int				do_selecting(struct s_info *info)
 {
-	struct s_info	info;
 	uint64_t		buff;
-	uint32_t		index;
+	int32_t			index;
 
-	(void)term;
-	if (setup_info(&info, argc, argv) == ERROR)
-		return (ERROR);
-	print_screen(&info);
+	print_screen(info);
 	while (42)
 	{
 		buff = 0;
 		read(STDIN_FILENO, &buff, 4);
 		index = get_action(buff);
-		execute_action(index, &info);
+		if (index >= 0)
+			if (execute_action(index, info) == BREAK)
+				break ;
 	}
-	ft_memdel((void **)&(info.args));
 	return (SUCCESS);
 }

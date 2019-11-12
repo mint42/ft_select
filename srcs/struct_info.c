@@ -34,7 +34,7 @@ int		update_window_size(struct s_info *info)
 
 	if (ioctl(STDIN_FILENO, TIOCGWINSZ, &window) == -1)
 		return (set_error(E_IOCTL));
-	if (window.ws_col < 80 || window.ws_row < 25)
+	if (window.ws_col < 4 || window.ws_row < 4)
 		return (set_error(E_MIN));
 	if (info->max_arg_len > window.ws_col)
 	{
@@ -61,13 +61,17 @@ int		setup_info(struct s_info *info, int argc, char **argv)
 {
 	hold_info(&info, SET_INFO);
 	info->max_arg_len = 0;
-	if (setup_args(&(info->args), &(info->max_arg_len), argc, argv) == ERROR)
-		return (ERROR);
+	info->args = 0;
 	info->n_active_args = argc - 1;
 	info->starting_arg = 0;
+	if (setup_args(info, argv) == ERROR)
+		return (ERROR);
 	info->max_delete_group_id = 0;
 	info->cursor_arg = 0;
 	info->cursor_coord = 0;
+	info->selected = 0;
+	info->s_len = 0;
+	info->n_selected_args = 0;
 	if (update_window_size(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);

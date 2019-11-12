@@ -13,8 +13,8 @@
 #ifndef SELECT_H
 # define SELECT_H
 
-struct s_term;
+struct s_info;
 
-int			do_selecting(int argc, char **argv, struct s_term *term);
+int		do_selecting(struct s_info *info);
 
 #endif

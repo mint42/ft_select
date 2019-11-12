@@ -5,8 +5,6 @@
 
 int		action_quit(struct s_info *info)
 {
-
 	(void)info;
-	return (SUCCESS);
+	return (BREAK);
 }
-

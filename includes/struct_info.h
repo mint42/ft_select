@@ -34,6 +34,9 @@ struct				s_info
 	uint32_t		column_width;
 	uint32_t		n_columns;
 	uint32_t		n_rows;
+	uint32_t		n_selected_args;
+	uint32_t		s_len;
+	char			*selected;
 };
 
 void				hold_info(struct s_info **info, uint8_t action);

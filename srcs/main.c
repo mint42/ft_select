@@ -14,12 +14,16 @@
 #include "screen.h"
 #include "select.h"
 #include "signals.h"
+#include "struct_info.h"
 #include "struct_term.h"
+#include "ft_mem.h"
+#include "ft_str.h"
 #include <unistd.h>
 
 static int		ft_select(int argc, char **argv)
 {
 	struct s_term	term;
+	struct s_info	info;
 	int				error_code;
 
 	setup_signal_catching();
@@ -27,11 +31,16 @@ static int		ft_select(int argc, char **argv)
 		return (ERROR);
 	if (setup_screen() == ERROR)
 		return (ERROR);
-	error_code = do_selecting(argc, argv, &term);
+	if (setup_info(&info, argc, argv) == ERROR)
+		return (ERROR);
+	error_code = do_selecting(&info);
 	if (reset_screen() == ERROR)
 		return (ERROR);
 	if (reset_term(&term) == ERROR)
 		return (ERROR);
+	write(STDIN_FILENO, info.selected, info.s_len + info.n_selected_args - 1);
+	ft_strdel(&(info.selected));
+	ft_memdel((void **)&(info.args));
 	return (error_code);
 }
 

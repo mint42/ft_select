@@ -9,8 +9,6 @@ int		action_select_all(struct s_info *info)
 	uint32_t	arg;
 	uint32_t	coord;
 
-	if (info->n_active_args == 0)
-		return (SUCCESS);
 	arg = info->starting_arg;
 	coord = 0;
 	while (coord < info->n_active_args)
@@ -18,10 +16,12 @@ int		action_select_all(struct s_info *info)
 		if (info->args[arg].status == UNSELECTED)
 		{
 			info->args[arg].status = SELECTED;
+			info->s_len = info->s_len + info->args[arg].len;
 			print_string(&(info->args[arg]), coord, info);
 		}
 		arg = info->args[arg].active_next;
 		++coord;
 	}
+	info->n_selected_args = info->n_active_args;
 	return (SUCCESS);
 }
