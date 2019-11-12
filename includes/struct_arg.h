@@ -27,7 +27,7 @@ struct			s_arg
 	uint32_t	active_next;
 	uint32_t	finder_prev;
 	uint32_t	finder_next;
-	uint32_t	inactive_group_id;
+	uint32_t	delete_group_id;
 	uint8_t		status;
 };
 

@@ -21,4 +21,6 @@ struct s_arg;
 void	print_string(struct s_arg *arg, uint32_t coord, struct s_info *info);
 int		print_screen(struct s_info *info);
 
+void	print_help_screen(void);
+
 #endif

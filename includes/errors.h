@@ -31,6 +31,7 @@ enum	e_error_code
 	E_IOCTL,
 	E_BAD_COL_SIZE,
 	E_MIN,
+	E_READ,
 	TOTAL_ERRORS,
 };
 

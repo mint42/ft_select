@@ -29,6 +29,7 @@ struct				s_info
 	uint32_t		starting_arg;
 	uint32_t		cursor_arg;
 	uint32_t		cursor_coord;
+	uint32_t		max_delete_group_id;
 	uint32_t		max_arg_len;
 	uint32_t		column_width;
 	uint32_t		n_columns;

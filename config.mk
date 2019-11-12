@@ -22,6 +22,7 @@ LIB_INCLUDE_DIRS := $(LIBFT_DIR)/includes
 LIB_INCLUDE_DIRS += $(LIBFT_DIR)/includes/ft_printf
 
 SRC_DIRS := ./srcs
+SRC_DIRS += ./srcs/actions
 INCLUDE_DIRS := ./includes
 
 CC := gcc

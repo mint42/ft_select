@@ -42,7 +42,7 @@ void	print_string(struct s_arg *arg, uint32_t coord, struct s_info *info)
 		ft_printfd(STDIN_FILENO, "%-*s", COLUMN_PADDING, arg->name);
 }
 
-int			print_screen(struct s_info *info)
+int		print_screen(struct s_info *info)
 {
 	uint32_t	coord;
 	uint32_t	arg;
@@ -58,4 +58,34 @@ int			print_screen(struct s_info *info)
 		++coord;
 	}
 	return (SUCCESS);
+}
+
+void	print_help_screen(void)
+{
+	int		fd;
+
+	fd = STDIN_FILENO;
+	write(fd, "\n", 1);
+	write(fd, "  ┌───────────────────────────────────────────────┐  \n", 200);
+	write(fd, "  │  ft_select                                [?] │  \n", 200);
+	write(fd, "  ├───────────────────────────────────────────────┤  \n", 200);
+	write(fd, "  │                                             ┬ │  \n", 200);
+	write(fd, "  │  h, left  - move left                       │ │  \n", 200);
+	write(fd, "  │  j, down  - move down                       │ │  \n", 200);
+	write(fd, "  │  k, up    - move up                         │ │  \n", 200);
+	write(fd, "  │  l, right - move right                      │ │  \n", 200);
+	write(fd, "  │  space    - select/deselect                 │ │  \n", 200);
+	write(fd, "  │  a        - select all                      │ │  \n", 200);
+	write(fd, "  │  d        - deselect all                    │ │  \n", 200);
+	write(fd, "  │  x        - delete                          │ │  \n", 200);
+	write(fd, "  │  u        - undo                            │ │  \n", 200);
+	write(fd, "  │  r        - restore to default              │ │  \n", 200);
+	write(fd, "  │  q, esc   - quit without saving             │ │  \n", 200);
+	write(fd, "  │  /        - finder                          │ │  \n", 200);
+	write(fd, "  │  ?        - help                            │ │  \n", 200);
+	write(fd, "  │                                             ┴ │  \n", 200);
+	write(fd, "  ├───────────────────────────────────────────────┤  \n", 200);
+	write(fd, "  │  / |                              | Esc exit  │  \n", 200);
+	write(fd, "  └───────────────────────────────────────────────┘  \n", 200);
+	write(fd, "\n", 1);
 }

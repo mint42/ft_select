@@ -32,7 +32,7 @@ static void		setup_arg(struct s_arg *args, int argc, char **argv, int i)
 		(args[i]).active_next = i + 1;
 	(args)[i].finder_prev = 0;
 	(args)[i].finder_next = 0;
-	(args)[i].inactive_group_id = 0;
+	(args)[i].delete_group_id = 0;
 }
 
 int				setup_args(struct s_arg **args, uint32_t *max_arg_len, int argc,
