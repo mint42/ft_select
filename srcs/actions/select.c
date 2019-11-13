@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   select.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/13 07:46:40 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/13 08:02:25 by rreedy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "errors.h"
 #include "print.h"
 #include "struct_info.h"
@@ -18,7 +30,7 @@ static inline void	deselect_arg(struct s_info *info)
 	--info->n_selected_args;
 }
 
-int		action_select(struct s_info *info)
+int					action_select(struct s_info *info)
 {
 	uint32_t	prev_cursor_arg;
 	uint32_t	prev_cursor_coord;

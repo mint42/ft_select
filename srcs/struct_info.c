@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:01 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 07:28:18 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/13 07:50:44 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		update_window_size(struct s_info *info)
 			return (set_error(E_BAD_COL_SIZE));
 		info->n_rows = info->n_active_args / info->n_columns;
 		if (info->n_active_args % info->n_columns)
-			++(info->n_rows);
+			++info->n_rows;
 	}
 	return (SUCCESS);
 }

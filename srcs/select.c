@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:43:52 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 07:41:46 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/13 08:01:48 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int		get_action(uint64_t buff)
 	int32_t		index;
 
 	index = 0;
-	while  (index < TOTAL_ACTION_CODES)
+	while (index < TOTAL_ACTION_CODES)
 	{
 		if (g_action_codes[index] == buff)
 			return (index / 2);

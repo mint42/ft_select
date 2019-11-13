@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   delete.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/13 07:46:19 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/13 08:03:42 by rreedy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "errors.h"
 #include "screen.h"
 #include "print.h"
@@ -6,7 +18,20 @@
 #include "struct_arg.h"
 #include <stdint.h>
 
-int		action_delete(struct s_info *info)
+static inline void		update_cursor_position(struct s_info *info)
+{
+	if (info->cursor_arg == info->starting_arg)
+		info->starting_arg = info->args[info->cursor_arg].active_next;
+	if (info->cursor_coord == info->n_active_args)
+	{
+		--info->cursor_coord;
+		info->cursor_arg = info->args[info->cursor_arg].active_prev;
+	}
+	else
+		info->cursor_arg = info->args[info->cursor_arg].active_next;
+}
+
+int						action_delete(struct s_info *info)
 {
 	--(info->n_active_args);
 	if (info->n_active_args == 0)
@@ -25,15 +50,7 @@ int		action_delete(struct s_info *info)
 	++(info->max_delete_group_id);
 	info->args[info->cursor_arg].status = DELETED;
 	info->args[info->cursor_arg].delete_group_id = info->max_delete_group_id;
-	if (info->cursor_arg == info->starting_arg)
-		info->starting_arg = info->args[info->cursor_arg].active_next;
-	if (info->cursor_coord == info->n_active_args)
-	{
-		--info->cursor_coord;
-		info->cursor_arg = info->args[info->cursor_arg].active_prev;
-	}
-	else
-		info->cursor_arg = info->args[info->cursor_arg].active_next;
+	update_cursor_position(info);
 	if (print_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);

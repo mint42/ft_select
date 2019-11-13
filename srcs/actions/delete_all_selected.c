@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   delete_all_selected.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/13 07:46:22 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/13 08:03:42 by rreedy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "errors.h"
 #include "screen.h"
 #include "actions.h"
@@ -6,7 +18,7 @@
 #include "struct_arg.h"
 #include <stdint.h>
 
-static void		delete_selected(struct s_info *info, uint32_t arg)
+static inline void		delete_selected(struct s_info *info, uint32_t arg)
 {
 	--info->n_active_args;
 	info->args[info->args[arg].active_next].active_prev =
@@ -31,7 +43,7 @@ static void		delete_selected(struct s_info *info, uint32_t arg)
 		info->starting_arg = info->args[info->starting_arg].active_next;
 }
 
-int				action_delete_all_selected(struct s_info *info)
+int						action_delete_all_selected(struct s_info *info)
 {
 	uint32_t	arg;
 	uint32_t	i;

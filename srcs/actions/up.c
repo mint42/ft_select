@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   up.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/13 07:46:48 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/13 08:03:42 by rreedy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "errors.h"
 #include "print.h"
 #include "struct_info.h"
 #include "struct_arg.h"
 #include <stdint.h>
 
-static void		move_cursor_up(struct s_info *info)
+static inline void		move_cursor_up(struct s_info *info)
 {
 	uint32_t	i;
 
@@ -20,7 +32,7 @@ static void		move_cursor_up(struct s_info *info)
 	}
 }
 
-static void		move_cursor_down_and_left(struct s_info *info)
+static inline void		move_cursor_down_and_left(struct s_info *info)
 {
 	uint32_t	column_to_stop_on;
 
@@ -40,7 +52,7 @@ static void		move_cursor_down_and_left(struct s_info *info)
 	}
 }
 
-int				action_up(struct s_info *info)
+int						action_up(struct s_info *info)
 {
 	uint32_t	prev_cursor_arg;
 	uint32_t	prev_cursor_coord;
