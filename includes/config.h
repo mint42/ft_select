@@ -14,8 +14,10 @@
 # define CONFIG_H
 
 /*
-** Hexadecimal key codes for actions. These can be any multibye key combo.
-*/
+** Hexadecimal key codes for actions. These can be any multibye key
+** combo. Repeated codes and missing primary and seconrary actions are
+** considered user error
+*/ 
 
 # define OUTPUT_PADDING_CHAR ' '
 # define OUTPUT_PADDING_LEN 1
@@ -30,7 +32,7 @@
 # define K_PRI_RIGHT 0x435B1B
 # define K_SEC_RIGHT 0x6C
 # define K_PRI_SELECT 0x20
-# define K_SEC_SELECT 0x20
+# define K_SEC_SELECT 0
 # define K_PRI_SELECT_ALL 0x61
 # define K_SEC_SELECT_ALL 0
 # define K_PRI_DELETE 0x08
