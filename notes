@@ -1,22 +1,18 @@
 ideas:
 
-change names to restore
 max arg len handle when bigger than screen
+help menu
+colors
+norme
+
 
 a - select all
-c - clear all selected
-d - restore to default
-? - help
+D - clear all selected
 u - undo
-q - quit
-x - delete
-/ - finder
+r - retore to default
+? - help
+config file
 
-hjkl arrow support
-scrolling
-colors
-
-box concept
 
 ┌───────────────────────────────────────────────┐
 │  ft_select                                [ ] │
