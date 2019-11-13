@@ -4,7 +4,10 @@ ft_select is a systems project in the 42 curriculum. It introduces the concept o
 
 - Use arrow keys to move circularly through the list.
 - Select and deselect arguments using the space bar key.
+- Delete item under cursor with backspace or delete.
 - Validate selections using return key and return the list of selected arguments to the shell.
+
+This project should also handle signals.
 
 ## Getting Started
 
@@ -16,23 +19,18 @@ usage: ft_select [args]
 
 ## Features
 
-Aside from the basic features mentioned in the [ft_select](https://github.com/mint42/ft_select#ft_select) section, here is the full list of features [to be] implemented
+Aside from the basic features mentioned in the [ft_select](https://github.com/mint42/ft_select#ft_select) section, here is the full list of features implemented
 
 - key support
 
-	- __h__	-	left
-	- __j__	-	down 
-	- __k__	-	up
-	- __l__	-	right
-	- __a__	-	select all
-	- __d__	-	delete
-	- __r__	-	restore to default
-	- __u__	-	undo delete
-	- __q__	-	quit
-	- __?__	-	help
-	- __/__	-	finder
+	-	select all
+	-	delete all selected
+	-	restore to default
+	-	undo last deleted group
+	-	help
 
-- scroll support
+These options and more can be configured to your desired key in the [config.h](https://github.com/mint42/ft_select/blob/master/includes/config.h) file
+
 
 ## References 
 
