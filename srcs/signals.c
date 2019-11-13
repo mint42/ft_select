@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:46:12 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 07:36:33 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/13 08:09:04 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static void		restore_and_exit(int sig)
 	(void)sig;
 	hold_term(&term, GET_TERM);
 	hold_info(&info, GET_INFO);
-	if (reset_screen(term) == ERROR)
+	if (restore_screen(term) == ERROR)
 		exit(ERROR);
-	if (reset_term(term) == ERROR)
+	if (restore_term(term) == ERROR)
 		exit(ERROR);
 	ft_strdel(&(info->selected));
 	ft_memdel((void **)&(info->args));

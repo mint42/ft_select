@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:37 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 06:54:10 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/13 08:09:27 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ struct				s_term
 
 void				hold_term(struct s_term **term, uint8_t action);
 int					setup_term(struct s_term *term);
-int					reset_term(struct s_term *term);
+int					restore_term(struct s_term *term);
 
 #endif

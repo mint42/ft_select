@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:21:31 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 05:21:38 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/13 08:08:54 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		setup_screen(void)
 	return (SUCCESS);
 }
 
-int		reset_screen(void)
+int		restore_screen(void)
 {
 	if (tc_put("te") == ERROR)
 		return (ERROR);

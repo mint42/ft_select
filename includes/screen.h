@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:21:48 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 05:21:37 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/13 08:09:19 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 int		clear_screen();
 int		setup_screen();
-int		reset_screen();
+int		restore_screen();
 
 #endif

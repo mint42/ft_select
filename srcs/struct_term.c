@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:07 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 08:39:53 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/13 08:10:45 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int			setup_term(struct s_term *term)
 	return (SUCCESS);
 }
 
-int			reset_term(struct s_term *term)
+int			restore_term(struct s_term *term)
 {
 	if (tcsetattr(STDIN_FILENO, TCSADRAIN, &term->old_settings) != 0)
 		return (set_error(E_TCGETATTR));
