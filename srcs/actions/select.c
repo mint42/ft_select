@@ -14,7 +14,7 @@ static inline void	select_arg(struct s_info *info)
 static inline void	deselect_arg(struct s_info *info)
 {
 	info->args[info->cursor_arg].status = UNSELECTED;
-	info->s_len = info->s_len + info->args[info->cursor_arg].len;
+	info->s_len = info->s_len - info->args[info->cursor_arg].len;
 	--info->n_selected_args;
 }
 
