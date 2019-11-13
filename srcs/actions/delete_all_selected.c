@@ -20,18 +20,20 @@ static void		delete_selected(struct s_info *info, uint32_t arg)
 		info->args[arg].active_next;
 	info->args[arg].delete_group_id = info->max_delete_group_id;
 	info->args[arg].status = DELETED;
-	if (arg == info->starting_arg)
-		info->starting_arg = info->args[info->starting_arg].active_next;
-	if (arg == info->starting_arg)
-		info->starting_arg = info->args[info->starting_arg].active_next;
-	if (info->cursor_coord >= info->n_active_args)
+	if (arg == info->cursor_arg)
 	{
-		--info->cursor_coord;
-		if (arg == info->cursor_arg)
+		if (info->cursor_coord >= info->n_active_args)
+		{
+			--info->cursor_coord;
 			info->cursor_arg = info->args[info->cursor_arg].active_prev;
+		}
+		else
+			info->cursor_arg = info->args[info->cursor_arg].active_next;
 	}
-	else if (arg <= info->cursor_arg)
-		info->cursor_arg = info->args[info->cursor_arg].active_next;
+	else if (arg < info->cursor_arg)
+		--info->cursor_coord;
+	if (arg == info->starting_arg)
+		info->starting_arg = info->args[info->starting_arg].active_next;
 }
 
 int				action_delete_all_selected(struct s_info *info)
@@ -43,13 +45,13 @@ int				action_delete_all_selected(struct s_info *info)
 		return (BREAK);
 	if (clear_screen(info) == ERROR)
 		return (ERROR);
-	arg = info->args[info->starting_arg].active_prev;
+	arg = info->starting_arg;
 	i = info->n_active_args;
 	while (i)
 	{
 		if (info->args[arg].status == SELECTED)
 			delete_selected(info, arg);
-		arg = info->args[arg].active_prev;
+		arg = info->args[arg].active_next;
 		--i;
 	}
 	info->n_selected_args = 0;
