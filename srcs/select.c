@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:43:52 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 06:55:10 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/13 07:41:46 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static int		execute_action(int32_t index, struct s_info *info)
 		action_return,
 		action_quit,
 		action_help_mode,
-		action_search_mode,
 	};
 
 	return (action_table[index](info));

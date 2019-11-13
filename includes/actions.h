@@ -4,7 +4,7 @@
 
 # include <stdint.h>
 
-# define TOTAL_ACTION_CODES 27
+# define TOTAL_ACTION_CODES 25
 # define K_PRI_LEFT 0x445B1B
 # define K_SEC_LEFT 0x68
 # define K_PRI_DOWN 0x425B1B
@@ -31,8 +31,6 @@
 # define K_SEC_QUIT 0x1B
 # define K_PRI_HELP 0x3F
 # define K_SEC_HELP 0
-# define K_PRI_SEARCH 0x2F
-# define K_SEC_SEARCH 0
 
 # define K_QUIT_HELP_MODE 0x1B
 
@@ -65,8 +63,6 @@ static const uint64_t	g_action_codes[] = {
 	K_SEC_QUIT,
 	K_PRI_HELP,
 	K_SEC_HELP,
-	K_PRI_SEARCH,
-	K_SEC_SEARCH,
 };
 
 int		action_left(struct s_info *info);

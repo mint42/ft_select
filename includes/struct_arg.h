@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:29 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 02:33:50 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/13 07:37:24 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ struct			s_arg
 	uint32_t	len;
 	uint32_t	active_prev;
 	uint32_t	active_next;
-	uint32_t	finder_prev;
-	uint32_t	finder_next;
 	uint32_t	delete_group_id;
 	uint8_t		status;
 };
