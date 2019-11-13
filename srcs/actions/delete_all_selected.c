@@ -8,11 +8,6 @@
 
 static void		delete_selected(struct s_info *info, uint32_t arg)
 {
-	static uint8_t	first;
-
-	if (first == 0)
-		++(info->max_delete_group_id);
-	first = 1;
 	--info->n_active_args;
 	info->args[info->args[arg].active_next].active_prev =
 		info->args[arg].active_prev;
@@ -41,6 +36,10 @@ int				action_delete_all_selected(struct s_info *info)
 	uint32_t	arg;
 	uint32_t	i;
 
+	if (info->n_selected_args)
+		++(info->max_delete_group_id);
+	else
+		return (SUCCESS);
 	if ((info->n_active_args - info->n_selected_args) == 0)
 		return (BREAK);
 	if (clear_screen(info) == ERROR)
