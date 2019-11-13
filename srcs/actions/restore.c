@@ -11,12 +11,46 @@
 /* ************************************************************************** */
 
 #include "errors.h"
+#include "screen.h"
+#include "print.h"
 #include "struct_info.h"
 #include "struct_arg.h"
 #include <stdint.h>
 
-int		action_restore(struct s_info *info)
+static void		restore_arg(struct s_info *info, uint32_t arg)
 {
-	(void)info;
+	info->args[arg].status = UNSELECTED;
+	if (arg == 0)
+		info->args[arg].active_prev = info->n_active_args - 1;
+	else
+		info->args[arg].active_prev = arg - 1;
+	if (arg == info->n_active_args - 1)
+		info->args[arg].active_next = 0;
+	else
+		info->args[arg].active_next = arg + 1;
+	info->args[arg].delete_group_id = 0;
+}
+
+int				action_restore(struct s_info *info)
+{
+	uint32_t	arg;
+
+	if (clear_screen() == ERROR)
+		return (ERROR);
+	info->starting_arg = 0;
+	info->cursor_arg = info->starting_arg;
+	info->cursor_coord = 0;
+	info->n_active_args = info->n_args;
+	info->max_delete_group_id = 0;
+	info->n_selected_args = 0;
+	info->s_len = 0;
+	arg = info->starting_arg;
+	while (arg < info->n_active_args)
+	{
+		restore_arg(info, arg);
+		++arg;
+	}
+	if (print_screen(info) == ERROR)
+		return (ERROR);
 	return (SUCCESS);
 }
