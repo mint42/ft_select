@@ -20,6 +20,7 @@ int		action_undo(struct s_info *info)
 			info->args[info->args[arg].active_prev].active_next = arg;
 			info->args[info->args[arg].active_next].active_prev = arg;
 			info->args[arg].status = UNSELECTED;
+			info->args[arg].delete_group_id = 0;
 			if (arg < info->starting_arg)
 				info->starting_arg = arg;
 			if (arg < info->cursor_arg)
