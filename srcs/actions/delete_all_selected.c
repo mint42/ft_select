@@ -6,13 +6,14 @@
 #include "struct_arg.h"
 #include <stdint.h>
 
-static void		delete_selected(struct s_info *info, uint32_t arg, uint32_t coord)
+static void		delete_selected(struct s_info *info, uint32_t arg)
 {
 	static uint8_t	first;
 
 	if (first == 0)
 		++(info->max_delete_group_id);
 	first = 1;
+	--info->n_active_args;
 	info->args[info->args[arg].active_next].active_prev =
 		info->args[arg].active_prev;
 	info->args[info->args[arg].active_prev].active_next =
@@ -21,40 +22,35 @@ static void		delete_selected(struct s_info *info, uint32_t arg, uint32_t coord)
 	info->args[arg].status = DELETED;
 	if (arg == info->starting_arg)
 		info->starting_arg = info->args[info->starting_arg].active_next;
-	if (arg == info->cursor_arg)
+	if (arg == info->starting_arg)
+		info->starting_arg = info->args[info->starting_arg].active_next;
+	if (info->cursor_coord >= info->n_active_args)
 	{
-		if (coord == info->n_active_args - 1)
-		{
-			--info->cursor_coord;
-			info->cursor_arg = info->args[arg].active_prev;
-		}
-		else
-			info->cursor_arg = info->args[arg].active_next;
+		--info->cursor_coord;
+		if (arg == info->cursor_arg)
+			info->cursor_arg = info->args[info->cursor_arg].active_prev;
 	}
-	else if (arg < info->cursor_arg)
+	else if (arg <= info->cursor_arg)
 		info->cursor_arg = info->args[info->cursor_arg].active_next;
-	--info->n_active_args;
 }
 
 int				action_delete_all_selected(struct s_info *info)
 {
-	uint32_t	prev_active_args;
 	uint32_t	arg;
-	uint32_t	coord;
+	uint32_t	i;
 
 	if ((info->n_active_args - info->n_selected_args) == 0)
 		return (BREAK);
 	if (clear_screen(info) == ERROR)
 		return (ERROR);
-	prev_active_args = info->n_active_args;
-	arg = info->starting_arg;
-	coord = 0;
-	while (coord < prev_active_args)
+	arg = info->args[info->starting_arg].active_prev;
+	i = info->n_active_args;
+	while (i)
 	{
 		if (info->args[arg].status == SELECTED)
-			delete_selected(info, arg, coord);
-		arg = info->args[arg].active_next;
-		++coord;
+			delete_selected(info, arg);
+		arg = info->args[arg].active_prev;
+		--i;
 	}
 	info->n_selected_args = 0;
 	info->s_len = 0;

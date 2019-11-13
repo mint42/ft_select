@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:32:44 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 08:36:55 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/13 05:06:47 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int		ft_select(int argc, char **argv)
 		return (ERROR);
 	if (reset_term(&term) == ERROR)
 		return (ERROR);
-	write(STDIN_FILENO, info.selected, info.s_len + info.n_selected_args - 1);
+	write(STDOUT_FILENO, info.selected, info.s_len + info.n_selected_args - 1);
 	ft_strdel(&(info.selected));
 	ft_memdel((void **)&(info.args));
 	return (error_code);
