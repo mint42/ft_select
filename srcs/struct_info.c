@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:01 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 07:02:29 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/13 07:28:18 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int		setup_info(struct s_info *info, int argc, char **argv)
 	hold_info(&info, SET_INFO);
 	info->max_arg_len = 0;
 	info->args = 0;
+	info->n_args = argc - 1;
 	info->n_active_args = argc - 1;
 	info->starting_arg = 0;
 	if (setup_args(info, argv) == ERROR)

@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:32 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/10 06:52:08 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/13 07:27:47 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ struct s_arg;
 struct				s_info
 {
 	struct s_arg	*args;
+	uint32_t		n_args;
 	uint32_t		n_active_args;
 	uint32_t		starting_arg;
 	uint32_t		cursor_arg;
