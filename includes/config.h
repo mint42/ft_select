@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 07:51:26 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 08:22:32 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/13 08:46:46 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define CONFIG_H
 
 /*
-** Hexadecimal key codes for actions
+** Hexadecimal key codes for actions. These can be any multibye key combo.
 */
 
-# define K_QUIT_HELP_MODE 0x1b
+# define OUTPUT_PADDING_CHAR ' '
+# define OUTPUT_PADDING_LEN 1
 
 # define TOTAL_ACTION_CODES 25
 # define K_PRI_LEFT 0x445B1B
@@ -46,5 +47,7 @@
 # define K_SEC_QUIT 0x1B
 # define K_PRI_HELP 0x3F
 # define K_SEC_HELP 0
+
+# define K_QUIT_HELP_MODE 0x1b
 
 #endif
