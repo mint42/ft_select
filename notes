@@ -1,11 +1,7 @@
 ideas:
 
-max arg len handle when bigger than screen
 help menu
-colors
-norme
-fg ctrl z
-
+crash when too small
 
 a - select all
 D - clear all selected
