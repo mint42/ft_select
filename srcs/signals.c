@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:46:12 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 08:09:04 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/15 07:23:50 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,16 @@ static void		resize(int sig)
 		restore_and_exit(0);
 	if (update_window_size(info) == ERROR)
 		restore_and_exit(0);
-	if (print_screen(info) == ERROR)
-		restore_and_exit(0);
+	if (info->mode == SELECT_MODE)
+	{
+		if (print_screen(info) == ERROR)
+			restore_and_exit(0);
+	}
+	else
+	{
+		if (print_help_screen(info) == ERROR)
+			restore_and_exit(0);
+	}
 }
 
 void			setup_signal_catching(void)

@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 07:51:26 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 08:46:46 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/15 06:01:47 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,24 @@
 # define CONFIG_H
 
 /*
-** Hexadecimal key codes for actions. These can be any multibye key
-** combo. Repeated codes and missing primary and seconrary actions are
-** considered user error
-*/ 
+** This determines how far in from the edge of the terminal box is drawn
+*/
+
+# define BOX_PADDING 2
+
+/*
+** OUTPUT_PADDING_CHAR pads the returned output by any ascii character. The
+** amount of this character can be adjusted with OUTPUT_PADDING_LEN.
+*/
 
 # define OUTPUT_PADDING_CHAR ' '
 # define OUTPUT_PADDING_LEN 1
+
+/*
+** Hexadecimal key codes for actions. These can be any multibye key
+** combo. Repeated codes and missing primary and seconrary actions are
+** considered user error
+*/
 
 # define TOTAL_ACTION_CODES 25
 # define K_PRI_LEFT 0x445B1B
@@ -49,7 +60,5 @@
 # define K_SEC_QUIT 0x1B
 # define K_PRI_HELP 0x3F
 # define K_SEC_HELP 0
-
-# define K_QUIT_HELP_MODE 0x1b
 
 #endif

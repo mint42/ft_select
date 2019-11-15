@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:43:52 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 08:01:48 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/15 07:33:02 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ int				do_selecting(struct s_info *info)
 	uint64_t		buff;
 	int32_t			index;
 
-	print_screen(info);
+	if (print_screen(info) == ERROR)
+		return (ERROR);
 	while (42)
 	{
 		buff = 0;

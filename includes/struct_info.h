@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:32 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 07:27:47 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/15 08:34:35 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,16 @@
 # define SET_INFO 1
 # define GET_INFO 2
 
+# define SELECT_MODE 1
+# define HELP_MODE 2
+
+# define K_QUIT_HELP_MODE 'q'
+
 struct s_arg;
 
 struct				s_info
 {
+	uint8_t			mode;
 	struct s_arg	*args;
 	uint32_t		n_args;
 	uint32_t		n_active_args;
@@ -32,6 +38,10 @@ struct				s_info
 	uint32_t		cursor_coord;
 	uint32_t		max_delete_group_id;
 	uint32_t		max_arg_len;
+	uint32_t		term_width;
+	uint32_t		term_height;
+	uint32_t		screen_width;
+	uint32_t		screen_height;
 	uint32_t		column_width;
 	uint32_t		n_columns;
 	uint32_t		n_rows;

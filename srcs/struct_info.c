@@ -6,11 +6,13 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:01 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 07:50:44 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/15 09:02:01 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
+#include "print.h"
+#include "config.h"
 #include "struct_info.h"
 #include "struct_arg.h"
 #include <curses.h>
@@ -28,31 +30,41 @@ void	hold_info(struct s_info **info, uint8_t action)
 		*info = held_info;
 }
 
+#include "ft_printf.h"
 int		update_window_size(struct s_info *info)
 {
 	struct winsize	window;
 
 	if (ioctl(STDIN_FILENO, TIOCGWINSZ, &window) == -1)
 		return (set_error(E_IOCTL));
-	if (window.ws_col < 4 || window.ws_row < 4)
-		return (set_error(E_MIN));
-	if (info->max_arg_len > window.ws_col)
+	if ((window.ws_col - ((BOX_PADDING * 2) - 17) <= 0) || (window.ws_row - ((BOX_PADDING * 2) - 10) <= 0))
 	{
-		info->column_width = window.ws_col;
-		info->n_columns = 1;
-		info->n_rows = info->n_active_args;
+		ft_printfd(STDIN_FILENO, "1", 1);
+		if (print_resize(info) == ERROR)
+			return (ERROR);
 	}
-	else
+	info->term_width = window.ws_col;
+	info->term_height = window.ws_row;
+	info->screen_width = window.ws_col - (BOX_PADDING * 2) - 6;
+	info->screen_height = window.ws_row - (BOX_PADDING * 2) - 10;
+	info->column_width = info->max_arg_len + COLUMN_PADDING;
+	info->n_columns = info->screen_width / info->column_width;
+	if (info->n_active_args < info->n_columns)
+		info->n_columns = info->n_active_args;
+	if (info->n_columns == 0)
 	{
-		info->column_width = info->max_arg_len;
-		info->n_columns = window.ws_col / (info->column_width + COLUMN_PADDING);
-		if (info->n_active_args < info->n_columns)
-			info->n_columns = info->n_active_args;
-		if (info->n_columns == 0)
-			return (set_error(E_BAD_COL_SIZE));
-		info->n_rows = info->n_active_args / info->n_columns;
-		if (info->n_active_args % info->n_columns)
-			++info->n_rows;
+		ft_printfd(STDIN_FILENO, "2", 1);
+		if (print_resize(info) == ERROR)
+			return (ERROR);
+	}
+	info->n_rows = info->n_active_args / info->n_columns;
+	if (info->n_active_args % info->n_columns)
+		++info->n_rows;
+	if (info->n_rows > info->screen_height)
+	{
+		ft_printfd(STDIN_FILENO, "3", 1);
+		if (print_resize(info) == ERROR)
+			return (ERROR);
 	}
 	return (SUCCESS);
 }
@@ -60,6 +72,7 @@ int		update_window_size(struct s_info *info)
 int		setup_info(struct s_info *info, int argc, char **argv)
 {
 	hold_info(&info, SET_INFO);
+	info->mode = SELECT_MODE;
 	info->max_arg_len = 0;
 	info->args = 0;
 	info->n_args = argc - 1;

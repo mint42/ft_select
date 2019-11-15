@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 07:46:27 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 07:46:51 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/15 07:26:15 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int		action_help_mode(struct s_info *info)
 
 	if (clear_screen(info) == ERROR)
 		return (ERROR);
-	print_help_screen();
+	info->mode = HELP_MODE;
+	if (print_help_screen(info) == ERROR)
+		return (ERROR);
 	buff = 0;
 	while (buff != K_QUIT_HELP_MODE)
 	{
@@ -34,6 +36,7 @@ int		action_help_mode(struct s_info *info)
 	}
 	if (clear_screen(info) == ERROR)
 		return (ERROR);
+	info->mode = SELECT_MODE;
 	if (print_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);

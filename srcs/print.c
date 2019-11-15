@@ -6,15 +6,19 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 05:22:27 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 08:02:03 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/15 09:01:42 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
+#include "box_drawing.h"
+#include "screen.h"
+#include "config.h"
 #include "struct_arg.h"
 #include "struct_info.h"
 #include "tc.h"
 #include "ft_printf.h"
+#include <stdint.h>
 #include <unistd.h>
 
 void	print_string(struct s_arg *arg, uint32_t coord, struct s_info *info)
@@ -24,8 +28,8 @@ void	print_string(struct s_arg *arg, uint32_t coord, struct s_info *info)
 	char		*esc_seq;
 
 	esc_seq = 0;
-	x_pos = (coord % info->n_columns) * (info->column_width + COLUMN_PADDING);
-	y_pos = coord / info->n_columns;
+	x_pos = ((coord % info->n_columns) * info->column_width) + BOX_PADDING + 3;
+	y_pos = (coord / info->n_columns) + BOX_PADDING + 4;
 	tc_move_cur(x_pos, y_pos);
 	if (arg->status == SELECTED && coord == info->cursor_coord)
 		esc_seq = "\e[7;4m";
@@ -47,8 +51,8 @@ int		print_screen(struct s_info *info)
 	uint32_t	coord;
 	uint32_t	arg;
 
-	if (info->n_columns == 0)
-		return (set_error(E_BAD_COL_SIZE));
+	if (draw_box(info, SELECT_MODE) == ERROR)
+		return (ERROR);
 	arg = info->starting_arg;
 	coord = 0;
 	while (coord < info->n_active_args)
@@ -60,32 +64,42 @@ int		print_screen(struct s_info *info)
 	return (SUCCESS);
 }
 
-void	print_help_screen(void)
+int		print_help_screen(struct s_info *info)
 {
-	int		fd;
-
-	fd = STDIN_FILENO;
-	write(fd, "\n", 1);
-	write(fd, "  ┌───────────────────────────────────────────────┐  \n", 200);
-	write(fd, "  │  ft_select                                [?] │  \n", 200);
-	write(fd, "  ├───────────────────────────────────────────────┤  \n", 200);
-	write(fd, "  │                                             ┬ │  \n", 200);
-	write(fd, "  │  h, left  - move left                       │ │  \n", 200);
-	write(fd, "  │  j, down  - move down                       │ │  \n", 200);
-	write(fd, "  │  k, up    - move up                         │ │  \n", 200);
-	write(fd, "  │  l, right - move right                      │ │  \n", 200);
-	write(fd, "  │  space    - select/deselect                 │ │  \n", 200);
-	write(fd, "  │  a        - select all                      │ │  \n", 200);
-	write(fd, "  │  d        - deselect all                    │ │  \n", 200);
-	write(fd, "  │  x        - delete                          │ │  \n", 200);
-	write(fd, "  │  u        - undo                            │ │  \n", 200);
-	write(fd, "  │  r        - restore to default              │ │  \n", 200);
-	write(fd, "  │  q, esc   - quit without saving             │ │  \n", 200);
-	write(fd, "  │  /        - finder                          │ │  \n", 200);
-	write(fd, "  │  ?        - help                            │ │  \n", 200);
-	write(fd, "  │                                             ┴ │  \n", 200);
-	write(fd, "  ├───────────────────────────────────────────────┤  \n", 200);
-	write(fd, "  │  / |                              | Esc exit  │  \n", 200);
-	write(fd, "  └───────────────────────────────────────────────┘  \n", 200);
-	write(fd, "\n", 1);
+	if (draw_box(info, HELP_MODE) == ERROR)
+		return (ERROR);
+	return (SUCCESS);
 }
+
+int		print_resize(struct s_info *info)
+{
+//	if (clear_screen(info) == ERROR)
+//		return (ERROR);
+	(void)info;
+	write(STDIN_FILENO, "screen too smol :(", 18);
+	return (SUCCESS);
+}
+
+/*
+**	write(fd, "  ┌───────────────────────────────────────────────┐  \n", 200);
+**	write(fd, "  │  ft_select                                [?] │  \n", 200);
+**	write(fd, "  ├───────────────────────────────────────────────┤  \n", 200);
+**	write(fd, "  │                                             ┬ │  \n", 200);
+**	write(fd, "  │  h, left  - move left                       │ │  \n", 200);
+**	write(fd, "  │  j, down  - move down                       │ │  \n", 200);
+**	write(fd, "  │  k, up    - move up                         │ │  \n", 200);
+**	write(fd, "  │  l, right - move right                      │ │  \n", 200);
+**	write(fd, "  │  space    - select/deselect                 │ │  \n", 200);
+**	write(fd, "  │  a        - select all                      │ │  \n", 200);
+**	write(fd, "  │  d        - deselect all                    │ │  \n", 200);
+**	write(fd, "  │  x        - delete                          │ │  \n", 200);
+**	write(fd, "  │  u        - undo                            │ │  \n", 200);
+**	write(fd, "  │  r        - restore to default              │ │  \n", 200);
+**	write(fd, "  │  q, esc   - quit without saving             │ │  \n", 200);
+**	write(fd, "  │  /        - finder                          │ │  \n", 200);
+**	write(fd, "  │  ?        - help                            │ │  \n", 200);
+**	write(fd, "  │                                             ┴ │  \n", 200);
+**	write(fd, "  ├───────────────────────────────────────────────┤  \n", 200);
+**	write(fd, "  │                                     Esc exit  │  \n", 200);
+**	write(fd, "  └───────────────────────────────────────────────┘  \n", 200);k}
+*/

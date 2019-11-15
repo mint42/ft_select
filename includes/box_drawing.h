@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   select.h                                           :+:      :+:    :+:   */
+/*   box_drawing.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 23:35:54 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/15 07:25:34 by rreedy           ###   ########.fr       */
+/*   Created: 2019/11/15 06:03:58 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/15 06:35:55 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SELECT_H
-# define SELECT_H
+#ifndef BOX_DRAWING_H
+# define BOX_DRAWING_H
+
+# include <stdint.h>
+
+# define BOX_DRAWING_CHAR_SIZE 3
 
 struct s_info;
 
-int		do_selecting(struct s_info *info);
+int		draw_box(struct s_info *info, uint8_t mode);
 
 #endif
