@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 06:05:09 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/15 07:21:33 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/15 09:56:07 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static int		print_details(struct s_info *info, uint8_t mode)
 	}
 	return (SUCCESS);
 }
-
 
 static void		draw_line(struct s_info *info, wchar_t start_char, wchar_t middle_char, wchar_t end_char)
 {

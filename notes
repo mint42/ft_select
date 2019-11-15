@@ -4,6 +4,7 @@ max arg len handle when bigger than screen
 help menu
 colors
 norme
+fg ctrl z
 
 
 a - select all

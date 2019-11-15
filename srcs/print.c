@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 05:22:27 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/15 09:01:42 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/15 09:45:47 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,8 @@ int		print_help_screen(struct s_info *info)
 
 int		print_resize(struct s_info *info)
 {
-//	if (clear_screen(info) == ERROR)
-//		return (ERROR);
-	(void)info;
+	if (clear_screen(info) == ERROR)
+		return (ERROR);
 	write(STDIN_FILENO, "screen too smol :(", 18);
 	return (SUCCESS);
 }
