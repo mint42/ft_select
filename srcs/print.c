@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 05:22:27 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/15 09:45:47 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/16 20:12:16 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	print_string(struct s_arg *arg, uint32_t coord, struct s_info *info)
 	char		*esc_seq;
 
 	esc_seq = 0;
-	x_pos = ((coord % info->n_columns) * info->column_width) + BOX_PADDING + 3;
-	y_pos = (coord / info->n_columns) + BOX_PADDING + 4;
+	x_pos = ((coord % info->n_columns) * info->column_width) + BOX_PADDING_X + 3;
+	y_pos = (coord / info->n_columns) + BOX_PADDING_Y + 4;
 	tc_move_cur(x_pos, y_pos);
 	if (arg->status == SELECTED && coord == info->cursor_coord)
 		esc_seq = "\e[7;4m";

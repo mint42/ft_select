@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 07:51:26 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/15 06:01:47 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/16 20:17:11 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 ** This determines how far in from the edge of the terminal box is drawn
 */
 
-# define BOX_PADDING 2
+# define BOX_PADDING_X 2
+# define BOX_PADDING_Y 1
 
 /*
 ** OUTPUT_PADDING_CHAR pads the returned output by any ascii character. The

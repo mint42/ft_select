@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:01 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/15 09:02:01 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/16 20:12:56 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		update_window_size(struct s_info *info)
 
 	if (ioctl(STDIN_FILENO, TIOCGWINSZ, &window) == -1)
 		return (set_error(E_IOCTL));
-	if ((window.ws_col - ((BOX_PADDING * 2) - 17) <= 0) || (window.ws_row - ((BOX_PADDING * 2) - 10) <= 0))
+	if ((window.ws_col - ((BOX_PADDING_X * 2) - 17) <= 0) || (window.ws_row - ((BOX_PADDING_Y * 2) - 10) <= 0))
 	{
 		ft_printfd(STDIN_FILENO, "1", 1);
 		if (print_resize(info) == ERROR)
@@ -45,8 +45,8 @@ int		update_window_size(struct s_info *info)
 	}
 	info->term_width = window.ws_col;
 	info->term_height = window.ws_row;
-	info->screen_width = window.ws_col - (BOX_PADDING * 2) - 6;
-	info->screen_height = window.ws_row - (BOX_PADDING * 2) - 10;
+	info->screen_width = window.ws_col - (BOX_PADDING_X * 2) - 6;
+	info->screen_height = window.ws_row - (BOX_PADDING_Y * 2) - 10;
 	info->column_width = info->max_arg_len + COLUMN_PADDING;
 	info->n_columns = info->screen_width / info->column_width;
 	if (info->n_active_args < info->n_columns)
