@@ -2,14 +2,9 @@ ideas:
 
 help menu
 crash when too small
-
-a - select all
-D - clear all selected
-u - undo
-r - retore to default
-? - help
-config file
-
+norme
+comment code
+remove submodule
 
 ┌───────────────────────────────────────────────┐
 │  ft_select                                [ ] │
