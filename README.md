@@ -39,11 +39,8 @@ These options can be configured in the [config.h](https://github.com/mint42/ft_s
 
 - https://learn.sparkfun.com/tutorials/terminal-basics/all
 - https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html
-- https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html#SEC23
 - http://man7.org/linux/man-pages/man3/termios.3.html
-- https://www.gnu.org/software/libc/manual/html_node/Setting-Modes.html#Setting-Modes
-- https://www.gnu.org/software/libc/manual/html_node/Mode-Data-Types.html
-- https://www.gnu.org/software/libc/manual/html_node/Noncanonical-Input.html#Noncanonical-Input
+- https://www.gnu.org/software/libc/manual/html_mono/libc.html#Low_002dLevel-Terminal-Interface
 - https://en.wikipedia.org/wiki/Box-drawing_character
 
 ## Author
