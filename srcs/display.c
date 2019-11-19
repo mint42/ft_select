@@ -38,12 +38,9 @@ void		display_arg(struct s_arg *arg, uint32_t coord, struct s_info *info)
 	else if (coord == info->cursor_coord)
 		esc_seq = "\e[4m";
 	if (esc_seq)
-	{
-		ft_printfd(STDIN_FILENO, "%s%-*s\e[0m", esc_seq, COLUMN_PADDING,
-			arg->name);
-	}
+		ft_printfd(STDIN_FILENO, "%s%-s\e[0m", esc_seq, arg->name);
 	else
-		ft_printfd(STDIN_FILENO, "%-*s", COLUMN_PADDING, arg->name);
+		ft_printfd(STDIN_FILENO, "%-s", arg->name);
 }
 
 int			display_screen(struct s_info *info)
