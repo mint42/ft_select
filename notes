@@ -1,11 +1,16 @@
 ideas:
 
 help menu
-crash when too small
+crash when too small, and other errors when resizing
 norme
 comment code
 remove submodule
 remove forbidden tparm function
+not restoring help mode
+add in new padding macro to make reading easier
+pages and bar
+clear from top
+
 
 ┌───────────────────────────────────────────────┐
 │  ft_select                               [?]  │
