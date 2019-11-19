@@ -13,8 +13,9 @@
 #ifndef SCREEN_H
 # define SCREEN_H
 
-int		clear_screen();
-int		setup_screen();
-int		restore_screen();
+int		wipe_line(void);
+int		wipe_screen(void);
+int		setup_screen(void);
+int		restore_screen(void);
 
 #endif

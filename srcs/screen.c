@@ -12,9 +12,8 @@
 
 #include "errors.h"
 #include "tc.h"
-#include <unistd.h>
 
-int		clear_screen(void)
+int		wipe_screen(void)
 {
 	if (tc_put("cl") == ERROR)
 		return (ERROR);

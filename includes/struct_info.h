@@ -15,36 +15,37 @@
 
 # include <stdint.h>
 
-# define COLUMN_PADDING 4
-
 # define SET_INFO 1
 # define GET_INFO 2
 
 # define SELECT_MODE 1
 # define HELP_MODE 2
 
-# define K_QUIT_HELP_MODE 'q'
+# define FALSE 0
+# define TRUE 1
 
 struct s_arg;
 
 struct				s_info
 {
-	uint8_t			mode;
+	uint8_t			screen_mode;
+	uint8_t			truncate;
+	uint8_t			screen_too_small;
 	struct s_arg	*args;
 	uint32_t		n_args;
 	uint32_t		n_active_args;
 	uint32_t		starting_arg;
 	uint32_t		cursor_arg;
 	uint32_t		cursor_coord;
+	uint32_t		cursor_page;
 	uint32_t		max_delete_group_id;
 	uint32_t		max_arg_len;
 	uint32_t		term_width;
 	uint32_t		term_height;
-	uint32_t		screen_width;
-	uint32_t		screen_height;
 	uint32_t		column_width;
 	uint32_t		n_columns;
 	uint32_t		n_rows;
+	uint32_t		n_pages;
 	uint32_t		n_selected_args;
 	uint32_t		s_len;
 	char			*selected;

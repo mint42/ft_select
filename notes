@@ -1,35 +1,10 @@
 ideas:
 
-help menu
-crash when too small, and other errors when resizing
+not restoring help mode
 norme
 comment code
 remove submodule
-remove forbidden tparm function
-not restoring help mode
-add in new padding macro to make reading easier
 pages and bar
 clear from top
-
-
-┌───────────────────────────────────────────────┐
-│  ft_select                               [?]  │
-├───────────────────────────────────────────────┤
-│                                             ┬ │
-│  h, left  - move left                       │ │
-│  j, down  - move down                       │ │
-│  k, up    - move up                         │ │
-│  l, right - move right                      │ │
-│  space    - select/deselect                 │ │
-│  a        - select all                      │ │
-│  d        - deselect all                    │ │
-│  x        - delete                          │ │
-│  u        - undo                            │ │
-│  r        - restore to default              │ │
-│  q, esc   - quit without saving             │ │
-│  /        - finder                          │ │
-│  ?        - help                            │ │
-│                                             ┴ │
-├───────────────────────────────────────────────┤
-│                                     'q' exit  │
-└───────────────────────────────────────────────┘
+underline extends too far
+move built in width from box drawing header? then check to remove header where it isnt needed

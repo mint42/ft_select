@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "errors.h"
-#include "print.h"
+#include "display.h"
 #include "struct_info.h"
 #include "struct_arg.h"
 #include <stdint.h>
@@ -29,7 +29,7 @@ int		action_select_all(struct s_info *info)
 		{
 			info->args[arg].status = SELECTED;
 			info->s_len = info->s_len + info->args[arg].len;
-			print_string(&(info->args[arg]), coord, info);
+			display_arg(&(info->args[arg]), coord, info);
 		}
 		arg = info->args[arg].active_next;
 		++coord;

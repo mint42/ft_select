@@ -14,52 +14,55 @@
 # define CONFIG_H
 
 /*
-** This determines how far in from the edge of the terminal box is drawn
+**	Adjust the space between the agruments printed in Select Mode
 */
 
-# define BOX_PADDING_X 2
-# define BOX_PADDING_Y 1
+# define COLUMN_PADDING 4
 
 /*
-** OUTPUT_PADDING_CHAR pads the returned output by any ascii character. The
-** amount of this character can be adjusted with OUTPUT_PADDING_LEN.
+**	This determines how much padding there is between the edge of the
+**	terminal and the box's border.
+*/
+
+# define OUTER_PAD_WIDTH 2
+# define OUTER_PAD_HEIGHT 1
+
+/*
+**	This determines how much padding there is between the box's border and the
+**	text.
+*/
+
+# define INNER_PAD_WIDTH 2
+# define INNER_PAD_HEIGHT 1
+
+/*
+**	OUTPUT_PADDING_CHAR pads the returned output by any ascii character. The
+**	amount of this character can be adjusted with OUTPUT_PADDING_LEN.
 */
 
 # define OUTPUT_PADDING_CHAR ' '
 # define OUTPUT_PADDING_LEN 1
 
 /*
-** Hexadecimal key codes for actions. These can be any multibye key
-** combo. Repeated codes and missing primary and seconrary actions are
-** considered user error
+**	A second set of key supports.  Primary key supports live in
+**	includes/actions.h and should remain untouched in order to avoid undefined
+**	behavior. The numbers shown should be configured to the value for the key
+**	you would like to press for that action. Multibyte keys are supported.
+**	This set will not be shown in Help Mode.
 */
 
-# define TOTAL_ACTION_CODES 25
-# define K_PRI_LEFT 0x445B1B
 # define K_SEC_LEFT 0x68
-# define K_PRI_DOWN 0x425B1B
 # define K_SEC_DOWN 0x6A
-# define K_PRI_UP 0x415B1B
 # define K_SEC_UP 0x6B
-# define K_PRI_RIGHT 0x435B1B
 # define K_SEC_RIGHT 0x6C
-# define K_PRI_SELECT 0x20
 # define K_SEC_SELECT 0
-# define K_PRI_SELECT_ALL 0x61
 # define K_SEC_SELECT_ALL 0
-# define K_PRI_DELETE 0x08
 # define K_SEC_DELETE 0x7F
-# define K_PRI_DELETE_ALL 0x44
 # define K_SEC_DELETE_ALL 0
-# define K_PRI_RESORE 0x72
 # define K_SEC_RESORE 0
-# define K_PRI_UNDO 0x75
 # define K_SEC_UNDO 0
-# define K_PRI_RETURN 0x0A
 # define K_SEC_RETURN 0
-# define K_PRI_QUIT 0x71
 # define K_SEC_QUIT 0x1B
-# define K_PRI_HELP 0x3F
 # define K_SEC_HELP 0
 
 #endif

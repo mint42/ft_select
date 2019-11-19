@@ -12,8 +12,7 @@
 
 #include "errors.h"
 #include "screen.h"
-#include "print.h"
-#include "actions.h"
+#include "display.h"
 #include "struct_info.h"
 #include "struct_arg.h"
 #include <stdint.h>
@@ -36,7 +35,7 @@ int						action_delete(struct s_info *info)
 	--(info->n_active_args);
 	if (info->n_active_args == 0)
 		return (BREAK);
-	if (clear_screen(info) == ERROR)
+	if (wipe_screen() == ERROR)
 		return (ERROR);
 	if (info->args[info->cursor_arg].status == SELECTED)
 	{
@@ -51,7 +50,7 @@ int						action_delete(struct s_info *info)
 	info->args[info->cursor_arg].status = DELETED;
 	info->args[info->cursor_arg].delete_group_id = info->max_delete_group_id;
 	update_cursor_position(info);
-	if (print_screen(info) == ERROR)
+	if (display_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }

@@ -12,7 +12,7 @@
 
 #include "errors.h"
 #include "screen.h"
-#include "print.h"
+#include "display.h"
 #include "struct_info.h"
 #include "struct_arg.h"
 #include <stdint.h>
@@ -35,7 +35,7 @@ int				action_restore(struct s_info *info)
 {
 	uint32_t	arg;
 
-	if (clear_screen() == ERROR)
+	if (wipe_screen() == ERROR)
 		return (ERROR);
 	info->starting_arg = 0;
 	info->cursor_arg = info->starting_arg;
@@ -50,7 +50,7 @@ int				action_restore(struct s_info *info)
 		restore_arg(info, arg);
 		++arg;
 	}
-	if (print_screen(info) == ERROR)
+	if (display_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }

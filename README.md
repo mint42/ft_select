@@ -27,9 +27,9 @@ Aside from the basic features mentioned in the [ft_select](https://github.com/mi
 	-	delete all selected
 	-	restore to default
 	-	undo last deleted group
-	-	help menu (auto updating)
+	-	help menu
 
-- Adjustable window padding for X and Y axis
+- Adjustable window padding and column padding
 
 - Customizable output format
 

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "errors.h"
-#include "actions.h"
+#include "config.h"
 #include "struct_info.h"
 #include "struct_arg.h"
 #include "ft_str.h"

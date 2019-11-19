@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "errors.h"
-#include "print.h"
+#include "display.h"
 #include "struct_info.h"
 #include "struct_arg.h"
 #include <stdint.h>
@@ -65,7 +65,7 @@ int						action_up(struct s_info *info)
 		move_cursor_up(info);
 	else
 		move_cursor_down_and_left(info);
-	print_string(&(info->args[prev_cursor_arg]), prev_cursor_coord, info);
-	print_string(&(info->args[info->cursor_arg]), info->cursor_coord, info);
+	display_arg(&(info->args[prev_cursor_arg]), prev_cursor_coord, info);
+	display_arg(&(info->args[info->cursor_arg]), info->cursor_coord, info);
 	return (SUCCESS);
 }

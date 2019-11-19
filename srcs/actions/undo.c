@@ -12,7 +12,7 @@
 
 #include "errors.h"
 #include "screen.h"
-#include "print.h"
+#include "display.h"
 #include "struct_info.h"
 #include "struct_arg.h"
 #include <stdint.h>
@@ -36,7 +36,7 @@ int						action_undo(struct s_info *info)
 
 	if (!info->max_delete_group_id)
 		return (SUCCESS);
-	if (clear_screen() == ERROR)
+	if (wipe_screen() == ERROR)
 		return (ERROR);
 	arg = 0;
 	while (arg < info->n_args)
@@ -49,7 +49,7 @@ int						action_undo(struct s_info *info)
 		++arg;
 	}
 	--info->max_delete_group_id;
-	if (print_screen(info) == ERROR)
+	if (display_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }

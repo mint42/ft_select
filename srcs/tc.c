@@ -28,7 +28,7 @@ int			tc_move_cur(uint32_t x_pos, uint32_t y_pos)
 	termcap_string = tgetstr("cm", 0);
 	if (!termcap_string)
 		return (set_error(E_TGETSTR));
-	termcap_string = tparm(termcap_string, y_pos, x_pos);
+	termcap_string = tgoto(termcap_string, x_pos, y_pos);
 	tputs(termcap_string, 1, ft_putchar_stdin);
 	return (SUCCESS);
 }

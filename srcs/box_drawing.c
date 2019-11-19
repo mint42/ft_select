@@ -11,46 +11,42 @@
 /* ************************************************************************** */
 
 #include "errors.h"
-#include "select.h"
 #include "struct_info.h"
 #include "config.h"
 #include "box_drawing.h"
 #include "tc.h"
 #include "ft_printf.h"
+#include <stdint.h>
 #include <unistd.h>
-#include <stdlib.h>
 
 static int		print_details(struct s_info *info, uint8_t mode)
 {
-	if (tc_move_cur(BOX_PADDING_X + 3, BOX_PADDING_Y + 1) == ERROR)
+	if (tc_move_cur(TOTAL_PAD_WIDTH, OUTER_PAD_HEIGHT + 1) == ERROR)
 		return (ERROR);
 	write(STDIN_FILENO, "ft_select", 9);
-	if (tc_move_cur(info->term_width - BOX_PADDING_X - 6, BOX_PADDING_Y + 1) == ERROR)
+	if (tc_move_cur(info->term_width - (TOTAL_PAD_WIDTH + 3), OUTER_PAD_HEIGHT + 1) == ERROR)
 		return (ERROR);
 	if (mode == HELP_MODE)
-	{
 		write(STDIN_FILENO, "[?]", 3);
-		if (tc_move_cur(info->term_width - BOX_PADDING_X - 14, info->term_height - BOX_PADDING_Y - 2) == ERROR)
-			return (ERROR);
-		write(STDIN_FILENO, "\'q\' to exit", 11);
-	}
 	else
-	{
 		write(STDIN_FILENO, "[ ]", 3);
-		if (tc_move_cur(info->term_width - BOX_PADDING_X - 14, info->term_height - BOX_PADDING_Y - 2) == ERROR)
-			return (ERROR);
+	if (tc_move_cur(info->term_width - (TOTAL_PAD_WIDTH + 11), info->term_height - (OUTER_PAD_HEIGHT - 2)) == ERROR)
+		return (ERROR);
+	if (mode == HELP_MODE)
+		write(STDIN_FILENO, "\'q\' to quit", 11);
+	else
 		write(STDIN_FILENO, "\'?\' to help", 11);
-	}
 	return (SUCCESS);
 }
 
-static void		draw_line(struct s_info *info, wchar_t start_char, wchar_t middle_char, wchar_t end_char)
+static void		draw_line(struct s_info *info, wchar_t start_char,
+					wchar_t middle_char, wchar_t end_char)
 {
 	uint32_t	i;
 
 	i = 0;
 	ft_printfd(STDIN_FILENO, "%lc", start_char);
-	while (i < info->term_width - (BOX_PADDING_X * 2) - 2)
+	while (i < info->term_width - (OUTER_PAD_WIDTH * 2) - (BUILT_IN_WIDTH * 2))
 	{
 		ft_printfd(STDIN_FILENO, "%lc", middle_char);
 		++i;
@@ -60,13 +56,13 @@ static void		draw_line(struct s_info *info, wchar_t start_char, wchar_t middle_c
 
 static int		draw_bottom(struct s_info *info)
 {
-	if (tc_move_cur(BOX_PADDING_X, info->term_height - BOX_PADDING_Y - 3) == ERROR)
+	if (tc_move_cur(OUTER_PAD_WIDTH, info->term_height - OUTER_PAD_HEIGHT - 3) == ERROR)
 		return (ERROR);
 	draw_line(info, L'├', L'─', L'┤');
-	if (tc_move_cur(BOX_PADDING_X, info->term_height - BOX_PADDING_Y - 2) == ERROR)
+	if (tc_move_cur(OUTER_PAD_WIDTH, info->term_height - OUTER_PAD_HEIGHT - 2) == ERROR)
 		return (ERROR);
 	draw_line(info, L'│', ' ', L'│');
-	if (tc_move_cur(BOX_PADDING_X, info->term_height - BOX_PADDING_Y - 1) == ERROR)
+	if (tc_move_cur(OUTER_PAD_WIDTH, info->term_height - OUTER_PAD_HEIGHT - 1) == ERROR)
 		return (ERROR);
 	draw_line(info, L'└', L'─', L'┘');
 	return (SUCCESS);
@@ -74,13 +70,13 @@ static int		draw_bottom(struct s_info *info)
 
 static int		draw_top(struct s_info *info)
 {
-	if (tc_move_cur(BOX_PADDING_X, BOX_PADDING_Y) == ERROR)
+	if (tc_move_cur(OUTER_PAD_WIDTH, OUTER_PAD_HEIGHT) == ERROR)
 		return (ERROR);
 	draw_line(info, L'┌', L'─', L'┐');
-	if (tc_move_cur(BOX_PADDING_X, BOX_PADDING_Y + 1) == ERROR)
+	if (tc_move_cur(OUTER_PAD_WIDTH, OUTER_PAD_HEIGHT + 1) == ERROR)
 		return (ERROR);
 	draw_line(info, L'│', ' ', L'│');
-	if (tc_move_cur(BOX_PADDING_X, BOX_PADDING_Y + 2) == ERROR)
+	if (tc_move_cur(OUTER_PAD_WIDTH, OUTER_PAD_HEIGHT + 2) == ERROR)
 		return (ERROR);
 	draw_line(info, L'├', L'─', L'┤');
 	return (SUCCESS);
@@ -92,10 +88,10 @@ int				draw_box(struct s_info *info, uint8_t mode)
 
 	if (draw_top(info) == ERROR)
 		return (ERROR);
-	i = 3;
-	while (i < info->term_height - (BOX_PADDING_Y * 2) - 3)
+	i = OUTER_PAD_HEIGHT + BUILT_IN_HEIGHT;
+	while (i < info->term_height - (OUTER_PAD_HEIGHT + BUILT_IN_HEIGHT))
 	{
-		if (tc_move_cur(BOX_PADDING_X, BOX_PADDING_Y + i))
+		if (tc_move_cur(OUTER_PAD_WIDTH, i) == ERROR)
 			return (ERROR);
 		draw_line(info, L'│', ' ', L'│');
 		++i;

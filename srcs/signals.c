@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "errors.h"
-#include "print.h"
+#include "display.h"
+#include "actions.h"
 #include "screen.h"
 #include "select.h"
 #include "struct_info.h"
@@ -33,7 +34,7 @@ static void		restore_and_exit(int sig)
 	hold_info(&info, GET_INFO);
 	ft_strdel(&(info->selected));
 	ft_memdel((void **)&(info->args));
-	if (restore_screen(term) == ERROR)
+	if (restore_screen() == ERROR)
 		exit(ERROR);
 	if (restore_term(term) == ERROR)
 		exit(ERROR);
@@ -47,20 +48,22 @@ static void		resize(int sig)
 
 	(void)sig;
 	hold_info(&info, GET_INFO);
-	if (clear_screen(info) == ERROR)
-		restore_and_exit(0);
 	if (update_window_size(info) == ERROR)
 		restore_and_exit(0);
-	if (info->mode == SELECT_MODE)
-	{
-		if (print_screen(info) == ERROR)
-			restore_and_exit(0);
-	}
-	else
-	{
-		if (print_help_screen(info) == ERROR)
-			restore_and_exit(0);
-	}
+ 	if (wipe_screen() == ERROR)
+ 		restore_and_exit(0);
+ 	if (info->screen_too_small == TRUE)
+ 		write(STDIN_FILENO, "screen too smol :(", 18);
+ 	else if (info->screen_mode == SELECT_MODE)
+ 	{
+ 		if (display_screen(info) == ERROR)
+ 			restore_and_exit(0);
+ 	}
+ 	else
+ 	{
+ 		if (display_help_screen(info) == ERROR)
+ 			restore_and_exit(0);
+ 	}
 }
 
 static void		run_in_background(int sig)
@@ -69,7 +72,7 @@ static void		run_in_background(int sig)
 
 	(void)sig;
 	hold_term(&term, GET_TERM);
-	if (restore_screen(term) == ERROR)
+	if (restore_screen() == ERROR)
 		restore_and_exit(ERROR);
 	signal(SIGTSTP, SIG_DFL);
 	ioctl(STDERR_FILENO, TIOCSTI, "\x1A");
@@ -85,11 +88,11 @@ static void		run_in_foreground(int sig)
 	hold_info(&info, GET_INFO);
 	if (setup_term(term) == ERROR)
 		restore_and_exit(0);
-	if (setup_screen(info) == ERROR)
+	if (setup_screen() == ERROR)
 		restore_and_exit(0);
-	if (info->mode == HELP_MODE)
+	if (info->screen_mode == HELP_MODE)
 	{
-		if (print_help_screen(info) == ERROR)
+		if (action_help_mode(info) == ERROR)
 			restore_and_exit(ERROR);
 	}
 	if (do_selecting(info) == ERROR)

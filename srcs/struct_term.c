@@ -13,11 +13,10 @@
 #include "errors.h"
 #include "struct_term.h"
 #include "ft_mem.h"
-#include <ncurses.h>
-#include <stdlib.h>
 #include <curses.h>
 #include <term.h>
 #include <termios.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 void		hold_term(struct s_term **term, uint8_t action)

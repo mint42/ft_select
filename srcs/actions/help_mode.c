@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "errors.h"
-#include "actions.h"
 #include "screen.h"
-#include "print.h"
+#include "help.h"
+#include "display.h"
 #include "struct_info.h"
 #include "struct_arg.h"
 #include <stdint.h>
@@ -23,10 +23,10 @@ int		action_help_mode(struct s_info *info)
 {
 	uint64_t	buff;
 
-	if (clear_screen(info) == ERROR)
+	if (wipe_screen() == ERROR)
 		return (ERROR);
-	info->mode = HELP_MODE;
-	if (print_help_screen(info) == ERROR)
+	info->screen_mode = HELP_MODE;
+	if (display_help_screen(info) == ERROR)
 		return (ERROR);
 	buff = 0;
 	while (buff != K_QUIT_HELP_MODE)
@@ -34,10 +34,10 @@ int		action_help_mode(struct s_info *info)
 		if (read(STDIN_FILENO, &buff, 1) == -1)
 			return (set_error(E_READ));
 	}
-	if (clear_screen(info) == ERROR)
+	if (wipe_screen() == ERROR)
 		return (ERROR);
-	info->mode = SELECT_MODE;
-	if (print_screen(info) == ERROR)
+	info->screen_mode = SELECT_MODE;
+	if (display_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }

@@ -12,8 +12,7 @@
 
 #include "errors.h"
 #include "screen.h"
-#include "actions.h"
-#include "print.h"
+#include "display.h"
 #include "struct_info.h"
 #include "struct_arg.h"
 #include <stdint.h>
@@ -54,7 +53,7 @@ int						action_delete_all_selected(struct s_info *info)
 		return (SUCCESS);
 	if ((info->n_active_args - info->n_selected_args) == 0)
 		return (BREAK);
-	if (clear_screen(info) == ERROR)
+	if (wipe_screen() == ERROR)
 		return (ERROR);
 	arg = info->starting_arg;
 	i = info->n_active_args;
@@ -67,7 +66,7 @@ int						action_delete_all_selected(struct s_info *info)
 	}
 	info->n_selected_args = 0;
 	info->s_len = 0;
-	if (print_screen(info) == ERROR)
+	if (display_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }
