@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 05:22:27 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 07:15:03 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 10:19:35 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,14 @@ static int		display_help_screen(void)
 {
 	uint32_t					i;
 	static const char *const	help_menu[TOTAL_ACTIONS] = {
-		"left arrow ... Move left",
-		"down arrow ... Move down",
-		"up arrow ..... Move up",
-		"right arrow .. Move right",
-		"space ........ Select/Deselect",
-		"a ............ Select all",
-		"Backspace .... Delete",
+		"Left Arrow ... Move left",
+		"Down Arrow ... Move down",
+		"Up Arrow ..... Move up",
+		"Right Arrow .. Move right",
+		"Bksp/Delete .. Delete",
+		"Space ........ Select/Deselect",
 		"D ............ Delete all selected",
+		"a ............ Select all",
 		"u ............ Undo",
 		"r ............ Restore to default",
 		"Enter ........ Return selected items",

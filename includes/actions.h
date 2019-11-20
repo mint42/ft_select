@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 04:08:42 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 04:09:42 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 10:14:13 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define K_PRI_RIGHT 0x435B1B
 # define K_PRI_SELECT 0x20
 # define K_PRI_SELECT_ALL 0x61
-# define K_PRI_DELETE 0x08
+# define K_PRI_DELETE 0x7F
 # define K_PRI_DELETE_ALL 0x44
 # define K_PRI_RESORE 0x72
 # define K_PRI_UNDO 0x75

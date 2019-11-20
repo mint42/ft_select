@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 04:08:56 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 04:09:42 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 10:15:02 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@
 # define K_SEC_RIGHT 0x6C
 # define K_SEC_SELECT 0
 # define K_SEC_SELECT_ALL 0
-# define K_SEC_DELETE 0x7F
+# define K_SEC_DELETE 0x7E335B1B
 # define K_SEC_DELETE_ALL 0
 # define K_SEC_RESORE 0
 # define K_SEC_UNDO 0
