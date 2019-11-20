@@ -22,7 +22,7 @@
 #include <stdint.h>
 #include <unistd.h>
 
-void	hold_info(struct s_info **info, uint8_t action)
+void			hold_info(struct s_info **info, uint8_t action)
 {
 	static struct s_info	*held_info;
 
@@ -32,7 +32,7 @@ void	hold_info(struct s_info **info, uint8_t action)
 		*info = held_info;
 }
 
-void	find_new_max_arg_len(struct s_info *info)
+void			find_new_max_arg_len(struct s_info *info)
 {
 	uint32_t	i;
 	uint32_t	new_max_arg_len;
@@ -48,19 +48,8 @@ void	find_new_max_arg_len(struct s_info *info)
 	info->max_arg_len = new_max_arg_len;
 }
 
-int		update_window_size(struct s_info *info)
+static void		update_window_info(struct s_info *info)
 {
-	struct winsize	window;
-
-	if (ioctl(STDIN_FILENO, TIOCGWINSZ, &window) == -1)
-		return (set_error(E_IOCTL));
-	info->term_width = window.ws_col;
-	info->term_height = window.ws_row;
-	if ((((int32_t)(info->term_width - ((TOTAL_PAD_WIDTH * 2) + HELP_MENU_WIDTH))) <= 0) || (((int32_t)(info->term_height - ((TOTAL_PAD_HEIGHT * 2) + HELP_MENU_HEIGHT))) <= 0))
-	{
-		info->screen_too_small = TRUE;
-		return (SUCCESS);
-	}
 	info->screen_width = info->term_width - (TOTAL_PAD_WIDTH * 2);
 	info->screen_height = info->term_height - (TOTAL_PAD_HEIGHT * 2);
 	info->screen_too_small = FALSE;
@@ -76,6 +65,28 @@ int		update_window_size(struct s_info *info)
 	info->n_rows = info->n_active_args / info->n_columns;
 	if (info->n_active_args % info->n_columns)
 		++info->n_rows;
+}
+
+int				update_window_size(struct s_info *info)
+{
+	struct winsize	window;
+
+	if (ioctl(STDIN_FILENO, TIOCGWINSZ, &window) == -1)
+		return (set_error(E_IOCTL));
+	info->term_width = window.ws_col;
+	info->term_height = window.ws_row;
+	if ((((int32_t)
+			(info->term_width - ((TOTAL_PAD_WIDTH * 2) + HELP_MENU_WIDTH)))
+			<= 0) 
+			||
+			(((int32_t)
+			(info->term_height - ((TOTAL_PAD_HEIGHT * 2) + HELP_MENU_HEIGHT)))
+			<= 0))
+	{
+		info->screen_too_small = TRUE;
+		return (SUCCESS);
+	}
+	update_window_info(info);
 	if ((int32_t)(info->screen_height - info->n_rows) < 0)
 		info->screen_too_small = TRUE;
 	return (SUCCESS);

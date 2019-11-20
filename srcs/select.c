@@ -40,43 +40,59 @@ static int		execute_action(int32_t index, struct s_info *info)
 	return (action_table[index](info));
 }
 
-static int		get_action(uint64_t buff)
+static int		get_secondary_action(uint64_t buff)
 {
-	int32_t		i;
-	static const uint64_t	action_codes[(TOTAL_ACTIONS * N_ACTION_CONFIGS)] = {
-	K_PRI_LEFT,
-	K_SEC_LEFT,
-	K_PRI_DOWN,
-	K_SEC_DOWN,
-	K_PRI_UP,
-	K_SEC_UP,
-	K_PRI_RIGHT,
-	K_SEC_RIGHT,
-	K_PRI_SELECT,
-	K_SEC_SELECT,
-	K_PRI_SELECT_ALL,
-	K_SEC_SELECT_ALL,
-	K_PRI_DELETE,
-	K_SEC_DELETE,
-	K_PRI_DELETE_ALL,
-	K_SEC_DELETE_ALL,
-	K_PRI_RESORE,
-	K_SEC_RESORE,
-	K_PRI_UNDO,
-	K_SEC_UNDO,
-	K_PRI_RETURN,
-	K_SEC_RETURN,
-	K_PRI_QUIT,
-	K_SEC_QUIT,
-	K_PRI_HELP,
-	K_SEC_HELP,
-};
+	uint32_t				i;
+	static const uint64_t	secondary_action_codes[TOTAL_ACTIONS] = {
+		K_SEC_LEFT,
+		K_SEC_DOWN,
+		K_SEC_UP,
+		K_SEC_RIGHT,
+		K_SEC_SELECT,
+		K_SEC_SELECT_ALL,
+		K_SEC_DELETE,
+		K_SEC_DELETE_ALL,
+		K_SEC_RESORE,
+		K_SEC_UNDO,
+		K_SEC_RETURN,
+		K_SEC_QUIT,
+		K_SEC_HELP,
+	};
 
 	i = 0;
-	while (i < (TOTAL_ACTIONS * N_ACTION_CONFIGS))
+	while (i < TOTAL_ACTIONS)
 	{
-		if (action_codes[i] == buff)
-			return (i / N_ACTION_CONFIGS);
+		if (secondary_action_codes[i] == buff)
+			return (i);
+		++i;
+	}
+	return (-1);
+}
+
+static int		get_primary_action(uint64_t buff)
+{
+	uint32_t					i;
+	static const uint64_t	primary_action_codes[TOTAL_ACTIONS] = {
+		K_PRI_LEFT,
+		K_PRI_DOWN,
+		K_PRI_UP,
+		K_PRI_RIGHT,
+		K_PRI_SELECT,
+		K_PRI_SELECT_ALL,
+		K_PRI_DELETE,
+		K_PRI_DELETE_ALL,
+		K_PRI_RESORE,
+		K_PRI_UNDO,
+		K_PRI_RETURN,
+		K_PRI_QUIT,
+		K_PRI_HELP,
+	};
+
+	i = 0;
+	while (i < TOTAL_ACTIONS)
+	{
+		if (primary_action_codes[i] == buff)
+			return (i);
 		++i;
 	}
 	return (-1);
@@ -94,7 +110,9 @@ int				do_selecting(struct s_info *info)
 	{
 		if (info->screen_too_small == TRUE)
 			continue ;
-		index = get_action(buff);
+		index = get_primary_action(buff);
+		if (index == -1)
+			index = get_secondary_action(buff);
 		if (index >= 0)
 		{
 			if (execute_action(index, info) == BREAK)

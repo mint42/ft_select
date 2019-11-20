@@ -22,7 +22,7 @@
 #include <unistd.h>
 
 void			display_arg(struct s_arg *arg, uint32_t coord,
-					struct s_info *info)
+						struct s_info *info)
 {
 	uint32_t	x_pos;
 	uint32_t	y_pos;
@@ -43,7 +43,7 @@ void			display_arg(struct s_arg *arg, uint32_t coord,
 	if (arg->len > info->screen_width)
 	{
 		ft_printfd(STDIN_FILENO, "%-.*s%s", info->screen_width -
-			TRUNCATE_STRING_LEN, arg->name, TRUNCATE_STRING);
+				TRUNCATE_STRING_LEN, arg->name, TRUNCATE_STRING);
 	}
 	else
 		ft_printfd(STDIN_FILENO, "%-s", arg->name);
@@ -114,12 +114,18 @@ int				display_screen(struct s_info *info)
 		error_code = display_too_small_screen();
 	else
 	{
-		if (draw_box(info, SELECT_MODE) == ERROR)
-			return (ERROR);
 		if (info->screen_mode == HELP_MODE)
+		{
+			if (draw_box(info, HELP_MODE) == ERROR)
+				return (ERROR);
 			error_code = display_help_screen();
+		}
 		else
+		{
+			if (draw_box(info, SELECT_MODE) == ERROR)
+				return (ERROR);
 			error_code = display_select_screen(info);
+		}
 	}
 	return (error_code);
 }

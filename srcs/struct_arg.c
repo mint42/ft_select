@@ -18,7 +18,7 @@
 #include <stdint.h>
 
 static void		setup_arg(struct s_arg *arg, uint32_t n_active_args,
-					char **argv, uint32_t i)
+						char **argv, uint32_t i)
 {
 	arg->name = argv[i + 1];
 	arg->len = ft_strlen(arg->name);
