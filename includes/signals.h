@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:46:55 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/05 04:50:29 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 07:48:58 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define SIGNALS_H
 
 void	setup_signal_catching(void);
+void	restore_signal_catching(void);
 
 #endif
