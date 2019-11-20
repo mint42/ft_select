@@ -1,10 +1,11 @@
-ideas:
+ideas to be implemented later:
 
-not restoring help mode
+pages and scroll bar
+clear from top/less writes
+
+to do:
+
 norme
 comment code
 remove submodule
-pages and bar
-clear from top
-underline extends too far
 move built in width from box drawing header? then check to remove header where it isnt needed
