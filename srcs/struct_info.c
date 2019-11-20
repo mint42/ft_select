@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:01 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 06:40:30 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 08:24:57 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,17 @@ void			hold_info(struct s_info **info, uint8_t action)
 void			find_new_max_arg_len(struct s_info *info)
 {
 	uint32_t	i;
+	uint32_t	arg;
 	uint32_t	new_max_arg_len;
 
 	i = 0;
+	arg = info->starting_arg;
 	new_max_arg_len = 0;
 	while (i < info->n_active_args)
 	{
-		if (info->args[i].len > new_max_arg_len)
-			new_max_arg_len = info->args[i].len;
+		if (info->args[arg].len > new_max_arg_len)
+			new_max_arg_len = info->args[arg].len;
+		arg = info->args[arg].active_next;
 		++i;
 	}
 	info->max_arg_len = new_max_arg_len;
