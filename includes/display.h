@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/10 05:23:46 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/15 08:05:15 by rreedy           ###   ########.fr       */
+/*   Created: 2019/11/20 04:09:06 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/20 04:09:42 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_H
+#ifndef DISPLAY_H
 # define DISPLAY_H
 
 # include <stdint.h>

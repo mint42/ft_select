@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 07:46:46 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 08:03:42 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 06:17:00 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int						action_undo(struct s_info *info)
 
 	if (!info->max_delete_group_id)
 		return (SUCCESS);
-	if (wipe_screen() == ERROR)
-		return (ERROR);
 	arg = 0;
 	while (arg < info->n_args)
 	{
@@ -50,9 +48,7 @@ int						action_undo(struct s_info *info)
 	}
 	--info->max_delete_group_id;
 	find_new_max_arg_len(info);
-	if (update_window_size(info) == ERROR)
-		return (ERROR);
-	if (display_screen(info) == ERROR)
+	if (update_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }

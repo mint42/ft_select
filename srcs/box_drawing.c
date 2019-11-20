@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 06:05:09 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/16 20:14:36 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 04:26:33 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int		print_details(struct s_info *info, uint8_t mode)
 	else
 		write(STDIN_FILENO, "[ ]", 3);
 	if (tc_move_cur(info->term_width - (TOTAL_PAD_WIDTH + 11),
-			info->term_height - (OUTER_PAD_HEIGHT - 2)) == ERROR)
+			info->term_height - (OUTER_PAD_HEIGHT + 2)) == ERROR)
 	{
 		return (ERROR);
 	}
@@ -52,7 +52,7 @@ static void		draw_line(struct s_info *info, wchar_t start_char,
 
 	i = 0;
 	ft_printfd(STDIN_FILENO, "%lc", start_char);
-	while (i < info->term_width - (OUTER_PAD_WIDTH * 2) - (BUILT_IN_WIDTH * 2))
+	while (i < info->term_width - ((OUTER_PAD_WIDTH + BUILTIN_WIDTH) * 2))
 	{
 		ft_printfd(STDIN_FILENO, "%lc", middle_char);
 		++i;
@@ -62,19 +62,19 @@ static void		draw_line(struct s_info *info, wchar_t start_char,
 
 static int		draw_bottom(struct s_info *info)
 {
-	if (tc_move_cur(OUTER_PAD_WIDTH, info->term_height - OUTER_PAD_HEIGHT - 3)
+	if (tc_move_cur(OUTER_PAD_WIDTH, info->term_height - (OUTER_PAD_HEIGHT + 3))
 			== ERROR)
 	{
 		return (ERROR);
 	}
 	draw_line(info, L'├', L'─', L'┤');
-	if (tc_move_cur(OUTER_PAD_WIDTH, info->term_height - OUTER_PAD_HEIGHT - 2)
+	if (tc_move_cur(OUTER_PAD_WIDTH, info->term_height - (OUTER_PAD_HEIGHT + 2))
 			== ERROR)
 	{
 		return (ERROR);
 	}
 	draw_line(info, L'│', ' ', L'│');
-	if (tc_move_cur(OUTER_PAD_WIDTH, info->term_height - OUTER_PAD_HEIGHT - 1)
+	if (tc_move_cur(OUTER_PAD_WIDTH, info->term_height - (OUTER_PAD_HEIGHT + 1))
 			== ERROR)
 	{
 		return (ERROR);
@@ -103,8 +103,8 @@ int				draw_box(struct s_info *info, uint8_t mode)
 
 	if (draw_top(info) == ERROR)
 		return (ERROR);
-	i = OUTER_PAD_HEIGHT + BUILT_IN_HEIGHT;
-	while (i < info->term_height - (OUTER_PAD_HEIGHT + BUILT_IN_HEIGHT))
+	i = OUTER_PAD_HEIGHT + BUILTIN_HEIGHT;
+	while (i < info->term_height - (OUTER_PAD_HEIGHT + BUILTIN_HEIGHT))
 	{
 		if (tc_move_cur(OUTER_PAD_WIDTH, i) == ERROR)
 			return (ERROR);

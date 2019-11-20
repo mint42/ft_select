@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 05:22:27 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/16 20:12:16 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 05:04:49 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int		display_select_screen(struct s_info *info)
 static int		display_help_screen(void)
 {
 	uint32_t					i;
-	static const char * const	help_menu[TOTAL_ACTIONS] = {
+	static const char *const	help_menu[TOTAL_ACTIONS] = {
 		"left arrow ... Move left",
 		"down arrow ... Move down",
 		"up arrow ..... Move up",
@@ -91,8 +91,7 @@ static int		display_help_screen(void)
 	{
 		if (tc_move_cur(TOTAL_PAD_WIDTH, TOTAL_PAD_HEIGHT + i) == ERROR)
 			return (ERROR);
-		ft_printfd(STDIN_FILENO, "%s", help_menu[i]);
-		++i;
+		ft_printfd(STDIN_FILENO, "%s", help_menu[i++]);
 	}
 	return (SUCCESS);
 }

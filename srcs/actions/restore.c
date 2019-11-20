@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 07:46:34 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 08:04:12 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 06:17:00 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,7 @@ int				action_restore(struct s_info *info)
 		++arg;
 	}
 	find_new_max_arg_len(info);
-	if (wipe_screen() == ERROR)
-		return (ERROR);
-	if (update_window_size(info) == ERROR)
-		return (ERROR);
-	if (display_screen(info) == ERROR)
+	if (update_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }

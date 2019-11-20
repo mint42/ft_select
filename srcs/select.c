@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:43:52 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/15 07:33:02 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 04:04:18 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int		get_secondary_action(uint64_t buff)
 
 static int		get_primary_action(uint64_t buff)
 {
-	uint32_t					i;
+	uint32_t				i;
 	static const uint64_t	primary_action_codes[TOTAL_ACTIONS] = {
 		K_PRI_LEFT,
 		K_PRI_DOWN,

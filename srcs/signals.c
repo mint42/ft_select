@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:46:12 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/15 09:53:59 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 06:13:54 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,8 @@ static void		resize(int sig)
 
 	(void)sig;
 	hold_info(&info, GET_INFO);
-	if (update_window_size(info) == ERROR)
+	if (update_screen(info) == ERROR)
 		restore_and_exit(0);
- 	if (wipe_screen() == ERROR)
- 		restore_and_exit(0);
-	if (display_screen(info) == ERROR)
- 		restore_and_exit(0);
 }
 
 static void		run_in_background(int sig)

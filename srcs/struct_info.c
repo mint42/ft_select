@@ -6,9 +6,9 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:01 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/16 20:12:56 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 06:40:30 by rreedy           ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */ 
+/* ************************************************************************** */
 
 #include "errors.h"
 #include "config.h"
@@ -75,24 +75,19 @@ int				update_window_size(struct s_info *info)
 		return (set_error(E_IOCTL));
 	info->term_width = window.ws_col;
 	info->term_height = window.ws_row;
-	if ((((int32_t)
-			(info->term_width - ((TOTAL_PAD_WIDTH * 2) + HELP_MENU_WIDTH)))
-			<= 0) 
-			||
-			(((int32_t)
-			(info->term_height - ((TOTAL_PAD_HEIGHT * 2) + HELP_MENU_HEIGHT)))
-			<= 0))
+	if ((((int32_t)(info->term_width - TOTAL_MIN_WIDTH)) <= 0) ||
+			(((int32_t)(info->term_height - TOTAL_MIN_HEIGHT)) <= 0))
 	{
 		info->screen_too_small = TRUE;
 		return (SUCCESS);
 	}
 	update_window_info(info);
-	if ((int32_t)(info->screen_height - info->n_rows) < 0)
+	if (((int32_t)(info->screen_height - info->n_rows)) < 0)
 		info->screen_too_small = TRUE;
 	return (SUCCESS);
 }
 
-int		setup_info(struct s_info *info, int argc, char **argv)
+int				setup_info(struct s_info *info, int argc, char **argv)
 {
 	hold_info(&info, SET_INFO);
 	info->screen_too_small = FALSE;

@@ -6,13 +6,14 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:32 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/15 08:34:35 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 05:28:20 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_INFO_H
 # define STRUCT_INFO_H
 
+# include "help.h"
 # include <stdint.h>
 
 # define SET_INFO 1
@@ -23,6 +24,13 @@
 
 # define FALSE 0
 # define TRUE 1
+
+# define BUILTIN_WIDTH 1
+# define BUILTIN_HEIGHT 3
+# define TOTAL_PAD_WIDTH (OUTER_PAD_WIDTH + INNER_PAD_WIDTH + BUILTIN_WIDTH)
+# define TOTAL_PAD_HEIGHT (OUTER_PAD_HEIGHT + INNER_PAD_HEIGHT + BUILTIN_HEIGHT)
+# define TOTAL_MIN_WIDTH ((TOTAL_PAD_WIDTH * 2) + HELP_MENU_WIDTH)
+# define TOTAL_MIN_HEIGHT ((TOTAL_PAD_HEIGHT * 2) + HELP_MENU_HEIGHT)
 
 struct s_arg;
 

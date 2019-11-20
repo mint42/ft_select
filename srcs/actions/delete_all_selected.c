@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 07:46:22 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 08:03:42 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 06:11:54 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ int						action_delete_all_selected(struct s_info *info)
 		return (SUCCESS);
 	if ((info->n_active_args - info->n_selected_args) == 0)
 		return (BREAK);
-	if (wipe_screen() == ERROR)
-		return (ERROR);
 	arg = info->starting_arg;
 	i = info->n_active_args;
 	while (i)
@@ -67,9 +65,7 @@ int						action_delete_all_selected(struct s_info *info)
 	info->n_selected_args = 0;
 	info->s_len = 0;
 	find_new_max_arg_len(info);
-	if (update_window_size(info) == ERROR)
-		return (ERROR);
-	if (display_screen(info) == ERROR)
+	if (update_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
 }
