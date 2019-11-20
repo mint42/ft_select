@@ -21,7 +21,8 @@
 #include <stdint.h>
 #include <unistd.h>
 
-void		display_arg(struct s_arg *arg, uint32_t coord, struct s_info *info)
+void			display_arg(struct s_arg *arg, uint32_t coord,
+					struct s_info *info)
 {
 	uint32_t	x_pos;
 	uint32_t	y_pos;
@@ -38,18 +39,23 @@ void		display_arg(struct s_arg *arg, uint32_t coord, struct s_info *info)
 	else if (coord == info->cursor_coord)
 		esc_seq = "\e[4m";
 	if (esc_seq)
-		ft_printfd(STDIN_FILENO, "%s%-s\e[0m", esc_seq, arg->name);
+		ft_printfd(STDIN_FILENO, "%s", esc_seq);
+	if (arg->len > info->screen_width)
+	{
+		ft_printfd(STDIN_FILENO, "%-.*s%s", info->screen_width -
+			TRUNCATE_STRING_LEN, arg->name, TRUNCATE_STRING);
+	}
 	else
 		ft_printfd(STDIN_FILENO, "%-s", arg->name);
+	if (esc_seq)
+		write(STDIN_FILENO, "\e[0m", 4);
 }
 
-int			display_screen(struct s_info *info)
+static int		display_select_screen(struct s_info *info)
 {
 	uint32_t	coord;
 	uint32_t	arg;
 
-	if (draw_box(info, SELECT_MODE) == ERROR)
-		return (ERROR);
 	arg = info->starting_arg;
 	coord = 0;
 	while (coord < info->n_active_args)
@@ -61,7 +67,7 @@ int			display_screen(struct s_info *info)
 	return (SUCCESS);
 }
 
-int			display_help_screen(struct s_info *info)
+static int		display_help_screen(void)
 {
 	uint32_t					i;
 	static const char * const	help_menu[TOTAL_ACTIONS] = {
@@ -80,8 +86,6 @@ int			display_help_screen(struct s_info *info)
 		"? ............ Help Mode",
 	};
 
-	if (draw_box(info, HELP_MODE) == ERROR)
-		return (ERROR);
 	i = 0;
 	while (i < TOTAL_ACTIONS)
 	{
@@ -91,4 +95,31 @@ int			display_help_screen(struct s_info *info)
 		++i;
 	}
 	return (SUCCESS);
+}
+
+static int		display_too_small_screen(void)
+{
+	if (tc_move_cur(0, 0) == ERROR)
+		return (ERROR);
+	write(STDIN_FILENO, "screen too smol :(", 18);
+	return (SUCCESS);
+}
+
+int				display_screen(struct s_info *info)
+{
+	int		error_code;
+
+	error_code = 0;
+	if (info->screen_too_small == TRUE)
+		error_code = display_too_small_screen();
+	else
+	{
+		if (draw_box(info, SELECT_MODE) == ERROR)
+			return (ERROR);
+		if (info->screen_mode == HELP_MODE)
+			error_code = display_help_screen();
+		else
+			error_code = display_select_screen(info);
+	}
+	return (error_code);
 }

@@ -87,10 +87,8 @@ int				do_selecting(struct s_info *info)
 	uint64_t		buff;
 	int32_t			index;
 
-	if (info->screen_too_small == TRUE)
- 		write(STDIN_FILENO, "screen too smol :(", 18);
-	else if (display_screen(info) == ERROR)
-			return (ERROR);
+	if (display_screen(info) == ERROR)
+		return (ERROR);
 	buff = 0;
 	while (read(STDIN_FILENO, &buff, 4))
 	{

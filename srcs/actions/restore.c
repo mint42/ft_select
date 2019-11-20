@@ -35,8 +35,6 @@ int				action_restore(struct s_info *info)
 {
 	uint32_t	arg;
 
-	if (wipe_screen() == ERROR)
-		return (ERROR);
 	info->starting_arg = 0;
 	info->cursor_arg = info->starting_arg;
 	info->cursor_coord = 0;
@@ -50,6 +48,11 @@ int				action_restore(struct s_info *info)
 		restore_arg(info, arg);
 		++arg;
 	}
+	find_new_max_arg_len(info);
+	if (wipe_screen() == ERROR)
+		return (ERROR);
+	if (update_window_size(info) == ERROR)
+		return (ERROR);
 	if (display_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);

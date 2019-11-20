@@ -44,6 +44,14 @@
 # define OUTPUT_PADDING_LEN 1
 
 /*
+**	TRUNCATE_STRING will print at the end of an argument that is too large to
+**	be displayed in the given width.
+*/
+
+# define TRUNCATE_STRING "..."
+# define TRUNCATE_STRING_LEN 3
+
+/*
 **	A second set of key supports.  Primary key supports live in
 **	includes/actions.h and should remain untouched in order to avoid undefined
 **	behavior. The numbers shown should be configured to the value for the key

@@ -26,7 +26,7 @@ int		action_help_mode(struct s_info *info)
 	if (wipe_screen() == ERROR)
 		return (ERROR);
 	info->screen_mode = HELP_MODE;
-	if (display_help_screen(info) == ERROR)
+	if (display_screen(info) == ERROR)
 		return (ERROR);
 	buff = 0;
 	while (buff != K_QUIT_HELP_MODE)
@@ -34,9 +34,9 @@ int		action_help_mode(struct s_info *info)
 		if (read(STDIN_FILENO, &buff, 1) == -1)
 			return (set_error(E_READ));
 	}
+	info->screen_mode = SELECT_MODE;
 	if (wipe_screen() == ERROR)
 		return (ERROR);
-	info->screen_mode = SELECT_MODE;
 	if (display_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);

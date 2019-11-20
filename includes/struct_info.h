@@ -29,7 +29,6 @@ struct s_arg;
 struct				s_info
 {
 	uint8_t			screen_mode;
-	uint8_t			truncate;
 	uint8_t			screen_too_small;
 	struct s_arg	*args;
 	uint32_t		n_args;
@@ -37,21 +36,22 @@ struct				s_info
 	uint32_t		starting_arg;
 	uint32_t		cursor_arg;
 	uint32_t		cursor_coord;
-	uint32_t		cursor_page;
 	uint32_t		max_delete_group_id;
 	uint32_t		max_arg_len;
 	uint32_t		term_width;
 	uint32_t		term_height;
+	uint32_t		screen_width;
+	uint32_t		screen_height;
 	uint32_t		column_width;
 	uint32_t		n_columns;
 	uint32_t		n_rows;
-	uint32_t		n_pages;
 	uint32_t		n_selected_args;
 	uint32_t		s_len;
 	char			*selected;
 };
 
 void				hold_info(struct s_info **info, uint8_t action);
+void				find_new_max_arg_len(struct s_info *info);
 int					update_window_size(struct s_info *info);
 int					setup_info(struct s_info *info, int argc, char **argv);
 

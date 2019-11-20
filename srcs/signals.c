@@ -52,18 +52,8 @@ static void		resize(int sig)
 		restore_and_exit(0);
  	if (wipe_screen() == ERROR)
  		restore_and_exit(0);
- 	if (info->screen_too_small == TRUE)
- 		write(STDIN_FILENO, "screen too smol :(", 18);
- 	else if (info->screen_mode == SELECT_MODE)
- 	{
- 		if (display_screen(info) == ERROR)
- 			restore_and_exit(0);
- 	}
- 	else
- 	{
- 		if (display_help_screen(info) == ERROR)
- 			restore_and_exit(0);
- 	}
+	if (display_screen(info) == ERROR)
+ 		restore_and_exit(0);
 }
 
 static void		run_in_background(int sig)

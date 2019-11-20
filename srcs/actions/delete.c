@@ -50,6 +50,9 @@ int						action_delete(struct s_info *info)
 	info->args[info->cursor_arg].status = DELETED;
 	info->args[info->cursor_arg].delete_group_id = info->max_delete_group_id;
 	update_cursor_position(info);
+	find_new_max_arg_len(info);
+	if (update_window_size(info) == ERROR)
+		return (ERROR);
 	if (display_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);

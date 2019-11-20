@@ -66,6 +66,9 @@ int						action_delete_all_selected(struct s_info *info)
 	}
 	info->n_selected_args = 0;
 	info->s_len = 0;
+	find_new_max_arg_len(info);
+	if (update_window_size(info) == ERROR)
+		return (ERROR);
 	if (display_screen(info) == ERROR)
 		return (ERROR);
 	return (SUCCESS);

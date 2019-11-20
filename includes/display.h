@@ -20,6 +20,5 @@ struct s_arg;
 
 int		display_arg(struct s_arg *arg, uint32_t coord, struct s_info *info);
 int		display_screen(struct s_info *info);
-int		display_help_screen(struct s_info *info);
 
 #endif
