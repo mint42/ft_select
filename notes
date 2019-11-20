@@ -6,8 +6,5 @@ string/array comparison library module
 
 to do:
 
-norme
-re header
 comment code
 remove submodule
-move built in width from box drawing header? then check to remove header where it isnt needed
