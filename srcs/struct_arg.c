@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:32:58 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 07:37:35 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 08:20:05 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int				setup_args(struct s_info *info, char **argv)
 	uint32_t	i;
 
 	info->args = (struct s_arg *)ft_memalloc(sizeof(struct s_arg) *
-		info->n_active_args);
+			info->n_active_args);
 	if (!info->args)
 		return (set_error(E_MALLOC));
 	i = 0;

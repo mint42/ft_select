@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 07:46:36 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/13 08:46:08 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 07:50:29 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ int				action_return(struct s_info *info)
 	if (info->n_selected_args == 0)
 		return (BREAK);
 	info->s_len = info->s_len + ((info->n_selected_args - 1) *
-		OUTPUT_PADDING_LEN) + 1;
+			OUTPUT_PADDING_LEN) + 1;
 	info->selected = ft_strinit(OUTPUT_PADDING_CHAR, info->s_len);
 	if (!info->selected)
 		return (set_error(E_MALLOC));
-	i = 0;
 	arg = info->starting_arg;
 	offset = 0;
+	i = 0;
 	while (i < info->n_active_args)
 	{
 		if (info->args[arg].status == SELECTED)
