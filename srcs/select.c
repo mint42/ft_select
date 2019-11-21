@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 04:43:52 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 04:04:18 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 23:44:00 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "actions.h"
 #include "struct_info.h"
 #include "display.h"
-#include "ft_mem.h"
 #include <stdint.h>
 #include <unistd.h>
 

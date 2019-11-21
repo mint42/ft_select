@@ -6,13 +6,12 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 07:46:46 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 06:17:00 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 23:51:38 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
 #include "screen.h"
-#include "display.h"
 #include "struct_info.h"
 #include "struct_arg.h"
 #include <stdint.h>

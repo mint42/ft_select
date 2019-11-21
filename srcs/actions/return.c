@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 07:46:36 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 07:50:29 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 23:51:38 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@
 #include "ft_str.h"
 #include <stdint.h>
 
-static void		copy_arg(struct s_info *info, uint32_t arg, uint32_t *offset)
+static inline void		copy_arg(struct s_info *info, uint32_t arg,
+								uint32_t *offset)
 {
 	ft_strncpy(info->selected + *offset, info->args[arg].name,
-		info->args[arg].len);
+			info->args[arg].len);
 	*offset = *offset + info->args[arg].len + OUTPUT_PADDING_LEN;
 }
 
-int				action_return(struct s_info *info)
+int						action_return(struct s_info *info)
 {
 	uint32_t	i;
 	uint32_t	arg;

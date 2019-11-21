@@ -6,18 +6,17 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 07:46:34 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 06:17:00 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 23:49:29 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
 #include "screen.h"
-#include "display.h"
 #include "struct_info.h"
 #include "struct_arg.h"
 #include <stdint.h>
 
-static void		restore_arg(struct s_info *info, uint32_t arg)
+static inline void		restore_arg(struct s_info *info, uint32_t arg)
 {
 	info->args[arg].status = UNSELECTED;
 	if (arg == 0)
@@ -31,7 +30,7 @@ static void		restore_arg(struct s_info *info, uint32_t arg)
 	info->args[arg].delete_group_id = 0;
 }
 
-int				action_restore(struct s_info *info)
+int						action_restore(struct s_info *info)
 {
 	uint32_t	arg;
 

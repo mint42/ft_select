@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   box_drawing.h                                      :+:      :+:    :+:   */
+/*   signal_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/20 06:19:51 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 23:39:05 by rreedy           ###   ########.fr       */
+/*   Created: 2019/11/20 23:30:43 by rreedy            #+#    #+#             */
+/*   Updated: 2019/11/20 23:32:03 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BOX_DRAWING_H
-# define BOX_DRAWING_H
+#ifndef SIGNAL_FUNCTIONS_H
+# define SIGNAL_FUNCTIONS_H
 
-# include <stdint.h>
-
-struct s_info;
-
-int		draw_box(struct s_info *info, uint8_t mode);
+void		restore_and_exit(int sig);
+void		resize(int sig);
+void		run_in_background(int sig);
+void		run_in_foreground(int sig);
 
 #endif

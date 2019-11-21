@@ -6,14 +6,13 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 06:05:09 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 04:26:33 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 23:40:03 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
 #include "struct_info.h"
 #include "config.h"
-#include "box_drawing.h"
 #include "tc.h"
 #include "ft_printf.h"
 #include <stdint.h>

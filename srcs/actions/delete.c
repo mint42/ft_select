@@ -6,16 +6,14 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 07:46:19 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 06:14:55 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/20 23:51:36 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
 #include "screen.h"
-#include "display.h"
 #include "struct_info.h"
 #include "struct_arg.h"
-#include <stdint.h>
 
 static inline void		update_cursor_position(struct s_info *info)
 {
@@ -41,9 +39,9 @@ int						action_delete(struct s_info *info)
 		--info->n_selected_args;
 	}
 	info->args[info->args[info->cursor_arg].active_next].active_prev =
-		info->args[info->cursor_arg].active_prev;
+			info->args[info->cursor_arg].active_prev;
 	info->args[info->args[info->cursor_arg].active_prev].active_next =
-		info->args[info->cursor_arg].active_next;
+			info->args[info->cursor_arg].active_next;
 	++(info->max_delete_group_id);
 	info->args[info->cursor_arg].status = DELETED;
 	info->args[info->cursor_arg].delete_group_id = info->max_delete_group_id;
