@@ -33,7 +33,7 @@ Aside from the basic features mentioned in the [ft_select](https://github.com/mi
 
 - Customizable output format
 
-These options can be configured in the [config.h](https://github.com/mint42/ft_select/blob/master/includes/config.h) file
+These options and more can be configured in the [config.h](https://github.com/mint42/ft_select/blob/master/includes/config.h) file
 
 ## References 
 
