@@ -6,17 +6,19 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 23:28:13 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 23:37:28 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/21 01:27:07 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "errors.h"
 #include "screen.h"
 #include "select.h"
+#include "signal_functions.h"
 #include "struct_info.h"
 #include "struct_term.h"
 #include "ft_mem.h"
 #include "ft_str.h"
+#include <signal.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
@@ -67,17 +69,13 @@ void		run_in_foreground(int sig)
 	struct s_term	*term;
 
 	(void)sig;
+	signal(SIGTSTP, run_in_background);
 	hold_term(&term, GET_TERM);
 	hold_info(&info, GET_INFO);
 	if (setup_term(term) == ERROR)
 		restore_and_exit(0);
 	if (setup_screen() == ERROR)
 		restore_and_exit(0);
-	if (info->screen_mode == HELP_MODE)
-	{
-		if (action_help_mode(info) == ERROR)
-			restore_and_exit(ERROR);
-	}
-	if (do_selecting(info) == ERROR)
+	if (update_screen(info) == ERROR)
 		restore_and_exit(ERROR);
 }
