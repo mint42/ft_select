@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 04:08:42 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 10:14:13 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/21 00:45:16 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define ACTIONS_H
 
 # define TOTAL_ACTIONS 13
-
-# define N_ACTION_CONFIGS 2
 
 # define K_PRI_LEFT 0x445B1B
 # define K_PRI_DOWN 0x425B1B
