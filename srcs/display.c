@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 05:22:27 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 23:41:04 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/21 01:35:05 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static int		display_help_screen(void)
 		"Space ........ Select/Deselect",
 		"D ............ Delete all selected",
 		"a ............ Select all",
-		"u ............ Undo",
+		"u ............ Undo deletion",
 		"r ............ Restore to default",
 		"Enter ........ Return selected items",
 		"q ............ Quit without saving",
