@@ -6,7 +6,7 @@
 /*   By: rreedy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 22:33:01 by rreedy            #+#    #+#             */
-/*   Updated: 2019/11/20 08:24:57 by rreedy           ###   ########.fr       */
+/*   Updated: 2019/11/21 02:21:59 by rreedy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ void			find_new_max_arg_len(struct s_info *info)
 
 static void		update_window_info(struct s_info *info)
 {
-	info->screen_width = info->term_width - (TOTAL_PAD_WIDTH * 2);
-	info->screen_height = info->term_height - (TOTAL_PAD_HEIGHT * 2);
+	info->screen_width = info->term_width - (TOTAL_PAD_WIDTH + TOTAL_PAD_WIDTH);
+	info->screen_height =
+			info->term_height - (TOTAL_PAD_HEIGHT + TOTAL_PAD_HEIGHT);
 	info->screen_too_small = FALSE;
 	info->column_width = info->max_arg_len + COLUMN_PADDING;
 	info->n_columns = info->screen_width / info->column_width;
