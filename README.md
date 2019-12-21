@@ -1,6 +1,6 @@
 # FT_SELECT
 
-ft_select is a systems project in the 42 curriculum. It introduces the concept of termcaps, and terminal manipulation in noncanonical mode. The goal of ft_select is to print a list of arguments, in an alternate screen, and to perform the following actions on that list:
+ft_select is a systems project in the 42 curriculum. It introduces the concepts of termcaps, and terminal manipulation in noncanonical mode. The goal of ft_select is to print a list of arguments, in an alternate screen, and to perform the following actions on that list:
 
 - Use arrow keys to move circularly through the list.
 - Select and deselect arguments using the 'space bar' key.
