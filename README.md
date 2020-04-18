@@ -11,7 +11,7 @@ This project should also handle signals.
 
 ## Getting Started
 
-ft_select uses [my 42 library](https://github.com/mint42/lib) which has been included as a git submodule. To set up this project, run `git clone https://github.com/mint42/ft_select` in the folder of your choice. Next, from the root of the ft_select repository run `git submodule update --init libft` to import the contents of the libft repository. Finally you can run `make` which will use the Makefile to build the library, and then the executable file `ft_select`.
+ft_select uses [my 42 library](https://github.com/mint42/libft) which has been included as a git submodule. To set up this project, run `git clone https://github.com/mint42/ft_select` in the folder of your choice. Next, from the root of the ft_select repository run `git submodule update --init libft` to import the contents of the libft repository. Finally you can run `make` which will use the Makefile to build the library, and then the executable file `ft_select`.
 
 ```
 usage: ft_select [args]
